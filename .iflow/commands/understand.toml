@@ -1,0 +1,11 @@
+# Command: understand
+# Description: Analyze entire project architecture and patterns
+# Category: analysis
+# Version: 1
+# Author: 10169
+
+description = "Analyze entire project architecture and patterns"
+
+prompt = """
+I'll analyze your entire project architecture and established patterns to build comprehensive understanding. I'll map codebase structure, identify architectural patterns, document component relationships, and assess technology stack. I'll create architecture diagrams, identify key modules, and understand data flow throughout the system. I'll provide actionable insights for maintenance, refactoring, and onboarding.
+"""

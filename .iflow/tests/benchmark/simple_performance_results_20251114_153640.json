@@ -1,0 +1,52 @@
+{
+  "test_metadata": {
+    "timestamp": "2025-11-14T15:36:33.375473",
+    "runner_type": "simple_performance_runner",
+    "test_count": 4
+  },
+  "test_results": {
+    "ARQ性能测试": {
+      "success": false,
+      "execution_time": 1.1180365085601807,
+      "returncode": 1,
+      "output": "Traceback (most recent call last):\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\tests\\arq_performance_test.py\", line 24, in <module>\n    from iflow.core.arq_v2_enhanced_engine import ARQV2EnhancedEngine, ReasoningMode, ProblemType\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\arq_v2_enhanced_engine.py\", line 47, in <module>\n    from .intelligent_workflow_optimizer import IntelligentWorkflowOptimizer\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\intelligent_workflow_optimizer.py\", line 81\n    适用场景: List[str]\n                   ^\nIndentationError: unindent does not match any outer indentation level\n",
+      "error": "Traceback (most recent call last):\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\tests\\arq_performance_test.py\", line 24, in <module>\n    from iflow.core.arq_v2_enhanced_engine import ARQV2EnhancedEngine, ReasoningMode, ProblemType\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\arq_v2_enhanced_engine.py\", line 47, in <module>\n    from .intelligent_workflow_optimizer import IntelligentWorkflowOptimizer\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\intelligent_workflow_optimizer.py\", line 81\n    适用场景: List[str]\n                   ^\nIndentationError: unindent does not match any outer indentation level\n"
+    },
+    "意识流系统测试": {
+      "success": false,
+      "execution_time": 4.804681062698364,
+      "returncode": 1,
+      "output": "Traceback (most recent call last):\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\tests\\consciousness_stream_test.py\", line 27, in <module>\n    from iflow.core.ultimate_consciousness_system import UltimateConsciousnessSystem\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\ultimate_consciousness_system.py\", line 65, in <module>\n    class UltimateThought:\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 1184, in dataclass\n    return wrap(cls)\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 1175, in wrap\n    return _process_class(cls, init, repr, eq, order, unsafe_hash,\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 1024, in _process_class\n    _init_fn(all_init_fields,\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 544, in _init_fn\n    raise TypeError(f'non-default argument {f.name!r} '\nTypeError: non-default argument 'content' follows default argument\n",
+      "error": "Traceback (most recent call last):\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\tests\\consciousness_stream_test.py\", line 27, in <module>\n    from iflow.core.ultimate_consciousness_system import UltimateConsciousnessSystem\n  File \"c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\ultimate_consciousness_system.py\", line 65, in <module>\n    class UltimateThought:\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 1184, in dataclass\n    return wrap(cls)\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 1175, in wrap\n    return _process_class(cls, init, repr, eq, order, unsafe_hash,\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 1024, in _process_class\n    _init_fn(all_init_fields,\n  File \"C:\\Users\\Administrator.DESKTOP-EGNE9ND\\AppData\\Local\\Programs\\Python\\Python310\\lib\\dataclasses.py\", line 544, in _init_fn\n    raise TypeError(f'non-default argument {f.name!r} '\nTypeError: non-default argument 'content' follows default argument\n"
+    },
+    "工作流引擎基准测试": {
+      "success": false,
+      "execution_time": 0.9908554553985596,
+      "returncode": 1,
+      "output": "ERROR:iflow.core.ultimate_workflow_engine_v6:关键模块导入失败: cannot import name 'UltimateCognitiveCoreV6' from 'iflow.core.ultimate_cognitive_core_v6' (c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\ultimate_cognitive_core_v6.py)\n",
+      "error": "ERROR:iflow.core.ultimate_workflow_engine_v6:关键模块导入失败: cannot import name 'UltimateCognitiveCoreV6' from 'iflow.core.ultimate_cognitive_core_v6' (c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\core\\ultimate_cognitive_core_v6.py)\n"
+    },
+    "Hooks系统测试": {
+      "success": false,
+      "execution_time": 0.17269062995910645,
+      "returncode": 1,
+      "output": "无法导入Hooks系统: cannot import name 'ComprehensiveHookManager' from 'iflow.hooks.comprehensive_hook_manager_v4' (c:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\测试工作流\\A项目\\iflow\\hooks\\comprehensive_hook_manager_v4.py)\n无法导入任何Hooks系统模块\n",
+      "error": ""
+    }
+  },
+  "summary": {
+    "total_tests": 4,
+    "successful_tests": 0,
+    "success_rate": 0.0,
+    "total_execution_time": 7.0872642993927,
+    "average_execution_time": 1.7715659141540527,
+    "fastest_test": "Hooks系统测试",
+    "slowest_test": "意识流系统测试"
+  },
+  "recommendations": [
+    "🔧 4 个测试失败，需要检查相关模块",
+    "优化ARQ推理引擎的导入和初始化逻辑",
+    "清理Hooks系统的重复文件和配置冲突",
+    "📊 成功率较低，建议优先修复基础功能"
+  ]
+}

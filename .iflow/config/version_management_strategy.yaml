@@ -1,0 +1,240 @@
+# iFlow版本管理策略配置
+# 确保所有功能正常使用的前提下进行版本优化
+
+version_management:
+  # 版本管理原则
+  principles:
+    - "保留最新、最完整的版本"
+    - "淘汰重复和过时版本"
+    - "确保向后兼容性"
+    - "维护功能完整性"
+  
+  # 版本优先级规则
+  priority_rules:
+    ultimate:
+      description: "终极版本，保留作为主要版本"
+      priority: 1
+    enhanced:
+      description: "增强版本，保留作为改进版本"
+      priority: 2
+    intelligent:
+      description: "智能版本，保留作为智能版本"
+      priority: 3
+    unified:
+      description: "统一版本，保留作为整合版本"
+      priority: 4
+    standard:
+      description: "标准版本，基础功能版本"
+      priority: 5
+  
+  # 版本号优先级
+  version_priority: "v6 > v5 > v4 > v3 > v2 > v1"
+  
+  # 核心引擎保留策略
+  core_engines:
+    workflow_engines:
+      keep: "ultimate_workflow_engine_v6.py"
+      integrate:
+        - "intelligent_workflow_optimizer.py"
+        - "workflow_stage_parallelizer.py"
+        - "parallel_agent_executor.py"
+      remove:
+        - "unified_workflow_engine_v2.py"
+    
+    arq_engines:
+      keep: "ultimate_arq_engine.py"
+      integrate:
+        - "enhanced_tool_call_precision_v2.py"
+        - "enhanced_arq_templates_v2.py"
+      remove:
+        - "arq_v2_enhanced_engine.py"
+        - "ultimate_arq_consciousness_v2.py"
+    
+    consciousness_systems:
+      keep: "ultimate_consciousness_system.py"
+      integrate:
+        - "intelligent_context_manager.py"
+        - "intelligent_context_cache_v5.py"
+      remove:
+        - "quantum_enhanced_consciousness_v2.py"
+        - "dkcm_system.py"
+        - "fix_consciousness.py"
+    
+    cache_systems:
+      keep: "intelligent_context_cache_v5.py"
+      integrate:
+        - "enhanced_cache_system_v1.py"
+        - "optimized_fusion_cache.py"
+      remove: []
+    
+    adapters:
+      keep: "unified_multimodal_adapter_v4.py"
+      integrate:
+        - "ultimate_multimodal_adapter_v3.py"
+        - "universal_llm_adapter_v14.py"
+        - "unified_multimodel_adapter_v2.py"
+      remove: []
+    
+    evolution_systems:
+      keep: "self_evolution_engine_v6.py"
+      integrate:
+        - "meta_evolutionary_engine_v5.py"
+        - "evolutionary_algorithm_engine_v2.py"
+      remove: []
+
+# 智能体标准化策略
+agent_standardization:
+  # 统一使用子目录格式
+  preferred_format: "subdirectory"
+  
+  # 需要创建命令文件的MD智能体
+  missing_commands:
+    - "backend-architect"
+    - "devops-architect"
+    - "frontend-architect"
+    - "learning-guide"
+    - "performance-engineer"
+    - "python-expert"
+    - "quality-engineer"
+    - "refactoring-expert"
+    - "requirements-analyst"
+    - "root-cause-analyst"
+    - "security-engineer"
+    - "socratic-mentor"
+    - "technical-writer"
+    - "arq-analyzer"
+  
+  # 重复定义处理
+  duplicates:
+    system-architect:
+      action: "keep_subdirectory"
+      reason: "子目录格式更完整，包含更多功能"
+
+# 文档管理策略
+documentation_management:
+  # 重复文档处理
+  duplicates:
+    - source: ".iflow/MODE_*.md"
+      target: ".iflow/docs/MODE_*.md"
+      action: "keep_root"
+      reason: "根目录更便于访问"
+  
+  # 文档结构标准化
+  structure:
+    root_docs:
+      - "IFLOW.md"
+      - "README.md"
+      - "FLAGS.md"
+      - "PRINCIPLES.md"
+      - "RULES.md"
+    
+    iflow_docs:
+      - "docs/README.md"
+      - "docs/MODE_*.md"
+      - "docs/parallel_execution_architecture_guide.md"
+    
+    agent_docs:
+      - "agents/README.md"
+      - "agents/SOLUTION_GUIDE.md"
+
+# 配置管理策略
+configuration_management:
+  # 集中化配置
+  central_config:
+    - ".iflow/settings.json"
+    - ".iflow/settings.local.json"
+    - ".iflow/mcp_servers_config.json"
+    - ".iflow/config/*.yaml"
+  
+  # 分散配置整合
+  scattered_configs:
+    - pattern: "**/config.yaml"
+      target: ".iflow/config/collected_configs/"
+    - pattern: "**/settings.json"
+      target: ".iflow/config/collected_configs/"
+
+# 安全和备份策略
+safety_and_backup:
+  # 自动备份
+  auto_backup:
+    enabled: true
+    directory: "backup/"
+    naming: "YYYYMMDD_HHMMSS"
+    
+  # 关键文件保护
+  protected_files:
+    - ".iflow/settings.json"
+    - ".iflow/mcp_servers_config.json"
+    - ".iflow/IFLOW.md"
+    - "IFLOW.md"
+    - "intelligent_project_cleaner.py"
+  
+  # 操作验证
+  verification:
+    - "功能完整性测试"
+    - "依赖关系检查"
+    - "配置有效性验证"
+    - "性能基准测试"
+
+# 实施时间表
+implementation_timeline:
+  phase1: # 第一阶段：基础清理
+    duration: "2周"
+    tasks:
+      - "清理重复文件"
+      - "标准版本管理"
+      - "智能体格式统一"
+  
+  phase2: # 第二阶段：核心优化
+    duration: "4周"
+    tasks:
+      - "核心引擎整合"
+      - "依赖关系优化"
+      - "配置集中化"
+  
+  phase3: # 第三阶段：系统完善
+    duration: "6周"
+    tasks:
+      - "文档标准化"
+      - "测试验证"
+      - "性能优化"
+
+# 监控和维护
+monitoring_and_maintenance:
+  # 定期检查
+  regular_checks:
+    - "重复文件检测"
+    - "依赖关系验证"
+    - "版本一致性检查"
+    - "功能完整性测试"
+  
+  # 维护周期
+  maintenance_cycle:
+    weekly: "重复文件检查"
+    monthly: "依赖关系更新"
+    quarterly: "版本策略评估"
+    annually: "全面架构审查"
+
+# 回滚计划
+rollback_plan:
+  # 触发条件
+  triggers:
+    - "功能失效"
+    - "性能严重下降"
+    - "兼容性问题"
+    - "用户反馈严重问题"
+  
+  # 回滚步骤
+  steps:
+    1. "停止当前系统"
+    2. "从备份恢复文件"
+    3. "验证功能完整性"
+    4. "重启系统"
+    5. "通知相关用户"
+  
+  # 备份保留策略
+  backup_retention:
+    daily: "保留7天"
+    weekly: "保留4周"
+    monthly: "保留12个月"
+    annual: "保留3年"

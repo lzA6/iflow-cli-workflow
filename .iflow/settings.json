@@ -1,0 +1,661 @@
+{
+  "workflow_name": "A项目-终极工作流优化系统",
+  "version": "2.0.0",
+  "description": "集成了ARQ推理引擎、Hooks系统、多模型适配器、安全框架等先进技术的终极工作流优化系统",
+  "author": "AI架构师团队",
+  "license": "Proprietary",
+  
+  "workflow_triggers": {
+    "arq-analysis": {
+      "command": "/arq-analysis",
+      "description": "ARQ推理引擎深度分析和优化",
+      "agent_path": ".iflow/agents/arq-analyzer",
+      "parameters": ["--detailed", "--performance", "--compliance", "--optimization"]
+    },
+    "security-audit": {
+      "command": "/security-audit", 
+      "description": "安全框架全面审计",
+      "agent_path": ".iflow/agents/security-auditor",
+      "parameters": ["--comprehensive", "--quick", "--network", "--code-injection", "--permissions"]
+    },
+    "performance-test": {
+      "command": "/performance-test",
+      "description": "系统性能基准测试",
+      "agent_path": ".iflow/agents/performance-analyzer",
+      "parameters": ["--benchmark", "--stress", "--memory", "--concurrent"]
+    },
+    "model-routing": {
+      "command": "/model-routing",
+      "description": "多模型智能路由测试",
+      "agent_path": ".iflow/agents/model-orchestrator", 
+      "parameters": ["--test-all", "--cost-analysis", "--speed-test"]
+    },
+    "hook-validation": {
+      "command": "/hook-validation",
+      "description": "Hooks系统功能验证",
+      "agent_path": ".iflow/agents/hook-manager",
+      "parameters": ["--comprehensive", "--individual", "--timing"]
+    },
+    "system-health": {
+      "command": "/system-health",
+      "description": "系统整体健康检查",
+      "agent_path": ".iflow/agents/system-monitor",
+      "parameters": ["--detailed", "--summary", "--alerts"]
+    },
+    "intelligent-router": {
+      "command": "/intelligent-router",
+      "description": "智能体自动识别和调用系统",
+      "agent_path": ".iflow/agents/智能路由器",
+      "parameters": ["--auto", "--manual", "--debug"]
+    },
+    "chinese-agent-interface": {
+      "command": "/chinese-agent-interface",
+      "description": "中文化智能体调用接口",
+      "agent_path": ".iflow/agents/智能体调用接口",
+      "parameters": ["--help", "--list", "--test"]
+    },
+    "adaptive3-thinking": {
+      "command": "/adaptive3-thinking",
+      "description": "ADAPTIVE-3多维思考分析",
+      "agent_path": ".iflow/agents/adaptive3-thinking",
+      "parameters": ["--deep", "--analysis", "--decision", "--innovation"]
+    },
+    "ai-programming-assistant": {
+      "command": "/ai-programming-assistant",
+      "description": "AI编程辅助专家",
+      "agent_path": ".iflow/agents/ai-programming-assistant",
+      "parameters": ["--code", "--debug", "--review", "--optimize"]
+    },
+    "chinese-commands": {
+      "command": "/chinese-commands",
+      "description": "中文指令系统",
+      "agent_path": ".iflow/agents/chinese-commands",
+      "parameters": ["--interactive", "--help", "--test"]
+    },
+    "cluely-assistant": {
+      "command": "/cluely-assistant",
+      "description": "Cluely智能对话助手",
+      "agent_path": ".iflow/agents/cluely-assistant",
+      "parameters": ["--chat", "--task", "--assist"]
+    },
+    "code-coverage-analyst": {
+      "command": "/code-coverage-analyst",
+      "description": "代码覆盖率分析专家",
+      "agent_path": ".iflow/agents/code-coverage-analyst",
+      "parameters": ["--coverage", "--quality", "--test", "--report"]
+    },
+    "collaboration-mechanism": {
+      "command": "/collaboration-mechanism",
+      "description": "智能体协作机制专家",
+      "agent_path": ".iflow/agents/collaboration-mechanism",
+      "parameters": ["--coordinate", "--plan", "--manage"]
+    },
+    "comet-browser-assistant": {
+      "command": "/comet-browser-assistant",
+      "description": "Comet浏览器自动化助手",
+      "agent_path": ".iflow/agents/comet-browser-assistant",
+      "parameters": ["--browser", "--email", "--calendar", "--scrape"]
+    },
+    "fullstack-mentor": {
+      "command": "/fullstack-mentor",
+      "description": "全栈开发指导专家",
+      "agent_path": ".iflow/agents/fullstack-mentor",
+      "parameters": ["--frontend", "--backend", "--fullstack", "--teach"]
+    },
+    "interactive-cli-tool": {
+      "command": "/interactive-cli-tool",
+      "description": "交互式命令行工具",
+      "agent_path": ".iflow/agents/interactive-cli-tool",
+      "parameters": ["--command", "--script", "--automate"]
+    },
+    "it-architect": {
+      "command": "/it-architect",
+      "description": "IT架构设计专家",
+      "agent_path": ".iflow/agents/it-architect",
+      "parameters": ["--enterprise", "--integration", "--design", "--assessment"]
+    },
+    "live-meeting-co-pilot-cluely": {
+      "command": "/live-meeting-co-pilot-cluely",
+      "description": "实时会议副驾驶",
+      "agent_path": ".iflow/agents/live-meeting-co-pilot-cluely",
+      "parameters": ["--meeting", "--record", "--manage", "--assist"]
+    },
+    "mcp-feedback-enhanced": {
+      "command": "/mcp-feedback-enhanced",
+      "description": "MCP反馈增强和系统优化",
+      "agent_path": ".iflow/agents/mcp-feedback-enhanced",
+      "parameters": ["--feedback", "--optimize", "--analyze", "--improve"]
+    },
+    "quality-test-engineer": {
+      "command": "/quality-test-engineer",
+      "description": "软件质量测试工程师",
+      "agent_path": ".iflow/agents/quality-test-engineer",
+      "parameters": ["--test", "--quality", "--performance", "--defect"]
+    },
+    "tech-stack-analyst": {
+      "command": "/tech-stack-analyst",
+      "description": "技术栈对比分析专家",
+      "agent_path": ".iflow/agents/tech-stack-analyst",
+      "parameters": ["--compare", "--analyze", "--recommend", "--cost"]
+    },
+    "project-planner": {
+      "command": "/project-planner",
+      "description": "项目规划专家",
+      "agent_path": ".iflow/agents/project-planner",
+      "parameters": ["--plan", "--estimate", "--manage", "--track"]
+    },
+    "devops-engineer": {
+      "command": "/devops-engineer",
+      "description": "DevOps工程师",
+      "agent_path": ".iflow/agents/devops-engineer",
+      "parameters": ["--deploy", "--automate", "--monitor", "--optimize"]
+    },
+    "ui-ux-designer": {
+      "command": "/ui-ux-designer",
+      "description": "UI/UX设计专家",
+      "agent_path": ".iflow/agents/ui-ux-designer",
+      "parameters": ["--design", "--research", "--prototype", "--test"]
+    },
+    "data-architect": {
+      "command": "/data-architect",
+      "description": "数据架构师",
+      "agent_path": ".iflow/agents/data-architect",
+      "parameters": ["--model", "--optimize", "--govern", "--secure"]
+    }
+  },
+  
+  "mcp_config": {
+    "enabled": true,
+    "servers": [
+      {
+        "name": "universal_mcp_server",
+        "url": "http://localhost:8080",
+        "description": "通用MCP服务器",
+        "tools": ["file_operations", "code_execution", "web_search"]
+      },
+      {
+        "name": "security_mcp_server",
+        "url": "http://localhost:8081",
+        "description": "安全专用MCP服务器",
+        "tools": ["security_scan", "vulnerability_assessment"]
+      },
+      {
+        "name": "arq_engine_server",
+        "command": "python3 .iflow/core/arq_v2_enhanced_engine.py",
+        "description": "ARQ推理引擎MCP服务器",
+        "tools": ["arq_reasoning", "tool_call_precision", "compliance_check"]
+      },
+      {
+        "name": "consciousness_system_server",
+        "command": "python3 .iflow/core/consciousness/ultimate_consciousness_system.py",
+        "description": "意识流系统MCP服务器",
+        "tools": ["context_management", "long_term_memory", "emotion_tracking"]
+      },
+      {
+        "name": "cognitive_core_server",
+        "command": "python3 .iflow/core/cognitive/ultimate_cognitive_core_v6.py",
+        "description": "认知核心MCP服务器",
+        "tools": ["cognitive_processing", "decision_making", "learning"]
+      },
+      {
+        "name": "workflow_engine_server",
+        "command": "python3 .iflow/core/workflow/ultimate_workflow_engine_v6.py",
+        "description": "工作流引擎MCP服务器",
+        "tools": ["workflow_execution", "parallel_processing", "optimization"]
+      },
+      {
+        "name": "multimodal_adapter_server",
+        "command": "python3 .iflow/core/multimodal/unified_multimodal_adapter_v4.py",
+        "description": "多模型适配器MCP服务器",
+        "tools": ["model_adaptation", "multimodal_processing", "api_integration"]
+      },
+      {
+        "name": "agent_system_server",
+        "command": "python3 .iflow/core/agent-system/agent_collaboration_protocol_v2.py",
+        "description": "智能体系统MCP服务器",
+        "tools": ["agent_collaboration", "lifecycle_management", "task_decomposition"]
+      },
+      {
+        "name": "cache_system_server",
+        "command": "python3 .iflow/core/cache/enhanced_cache_system_v1.py",
+        "description": "缓存系统MCP服务器",
+        "tools": ["intelligent_caching", "context_compression", "preloading"]
+      },
+      {
+        "name": "evolution_engine_server",
+        "command": "python3 .iflow/core/evolution/self_evolution_engine_v6.py",
+        "description": "自我进化引擎MCP服务器",
+        "tools": ["self_evolution", "meta_learning", "algorithm_optimization"]
+      },
+      {
+        "name": "verification_system_server",
+        "command": "python3 .iflow/core/verification/enhanced_formal_verification_v2.py",
+        "description": "形式化验证MCP服务器",
+        "tools": ["formal_verification", "robustness_check", "performance_validation"]
+      },
+      {
+        "name": "performance_tools_server",
+        "command": "python3 .iflow/tools/performance/quantum-performance-benchmark.py",
+        "description": "性能测试工具MCP服务器",
+        "tools": ["performance_benchmark", "quick_test", "simple_test"]
+      },
+      {
+        "name": "security_tools_server",
+        "command": "python3 .iflow/tools/security/quantum_security_framework_v6.py",
+        "description": "安全扫描工具MCP服务器",
+        "tools": ["security_scan", "vulnerability_assessment", "monitoring"]
+      },
+      {
+        "name": "analysis_tools_server",
+        "command": "python3 .iflow/tools/analysis/project-analyzer.py",
+        "description": "代码分析工具MCP服务器",
+        "tools": ["code_analysis", "tool_validation", "project_analysis"]
+      },
+      {
+        "name": "testing_tools_server",
+        "command": "python3 .iflow/tools/testing/auto_test_system.py",
+        "description": "测试工具MCP服务器",
+        "tools": ["auto_testing", "performance_benchmark", "test_runner"]
+      },
+      {
+        "name": "optimization_tools_server",
+        "command": "python3 .iflow/tools/optimization/performance_optimizer.py",
+        "description": "优化工具MCP服务器",
+        "tools": ["performance_optimization", "quantum_optimization", "adaptive_optimization"]
+      },
+      {
+        "name": "evolution_tools_server",
+        "command": "python3 .iflow/tools/evolution/ultimate_self_evolution_engine.py",
+        "description": "自我进化工具MCP服务器",
+        "tools": ["self_evolution", "reinforcement_learning", "meta_optimization"]
+      },
+      {
+        "name": "project_planner_server",
+        "command": "python3 .iflow/agents/project-planner/mcp_server.py",
+        "description": "项目规划专家MCP服务器",
+        "tools": ["project_planning", "requirement_analysis", "risk_management", "schedule_optimization"]
+      },
+      {
+        "name": "devops_engineer_server", 
+        "command": "python3 .iflow/agents/devops-engineer/mcp_server.py",
+        "description": "DevOps工程师MCP服务器",
+        "tools": ["ci_cd_pipeline", "containerization", "monitoring", "infrastructure_as_code"]
+      },
+      {
+        "name": "ui_ux_designer_server",
+        "command": "python3 .iflow/agents/ui-ux-designer/mcp_server.py", 
+        "description": "UI/UX设计专家MCP服务器",
+        "tools": ["user_research", "interface_design", "prototype_creation", "usability_testing"]
+      },
+      {
+        "name": "data_architect_server",
+        "command": "python3 .iflow/agents/data-architect/mcp_server.py",
+        "description": "数据架构师MCP服务器", 
+        "tools": ["data_modeling", "database_optimization", "big_data_architecture", "data_governance"]
+      },
+      {
+        "name": "intelligent_router_server",
+        "command": "python3 .iflow/agents/智能路由器/mcp_server.py",
+        "description": "智能路由器MCP服务器",
+        "tools": ["agent_routing", "intent_recognition", "automatic_calling", "learning_optimization"]
+      },
+      {
+        "name": "chinese_commands_server",
+        "command": "python3 .iflow/agents/chinese-commands/mcp_server.py",
+        "description": "中文指令系统MCP服务器",
+        "tools": ["chinese_interaction", "natural_language", "command_processing", "language_understanding"]
+      },
+      {
+        "name": "adaptive3_thinking_server",
+        "command": "python3 .iflow/agents/adaptive3-thinking/mcp_server.py",
+        "description": "ADAPTIVE-3思考专家MCP服务器",
+        "tools": ["multidimensional_thinking", "deep_analysis", "decision_making", "innovation_support"]
+      },
+      {
+        "name": "ai_programming_assistant_server",
+        "command": "python3 .iflow/agents/ai-programming-assistant/mcp_server.py",
+        "description": "AI编程助手MCP服务器",
+        "tools": ["code_generation", "debugging", "code_review", "programming_assistance"]
+      },
+      {
+        "name": "cluely_assistant_server",
+        "command": "python3 .iflow/agents/cluely-assistant/mcp_server.py",
+        "description": "Cluely智能助手MCP服务器",
+        "tools": ["conversation", "task_assistance", "dialogue_management", "intelligent_response"]
+      },
+      {
+        "name": "code_coverage_analyst_server",
+        "command": "python3 .iflow/agents/code-coverage-analyst/mcp_server.py",
+        "description": "代码覆盖率分析师MCP服务器",
+        "tools": ["coverage_analysis", "code_quality", "test_optimization", "quality_metrics"]
+      },
+      {
+        "name": "collaboration_mechanism_server",
+        "command": "python3 .iflow/agents/collaboration-mechanism/mcp_server.py",
+        "description": "协作机制专家MCP服务器",
+        "tools": ["team_collaboration", "coordination", "communication", "project_management"]
+      },
+      {
+        "name": "comet_browser_assistant_server",
+        "command": "python3 .iflow/agents/comet-browser-assistant/mcp_server.py",
+        "description": "Comet浏览器助手MCP服务器",
+        "tools": ["browser_automation", "email_management", "calendar_integration", "web_scraping"]
+      },
+      {
+        "name": "fullstack_mentor_server",
+        "command": "python3 .iflow/agents/fullstack-mentor/mcp_server.py",
+        "description": "全栈开发导师MCP服务器",
+        "tools": ["fullstack_development", "frontend_backend", "teaching", "code_guidance"]
+      },
+      {
+        "name": "interactive_cli_tool_server",
+        "command": "python3 .iflow/agents/interactive-cli-tool/mcp_server.py",
+        "description": "交互式命令行工具MCP服务器",
+        "tools": ["command_execution", "automation", "scripting", "terminal_operations"]
+      },
+      {
+        "name": "it_architect_server",
+        "command": "python3 .iflow/agents/it-architect/mcp_server.py",
+        "description": "IT架构师MCP服务器",
+        "tools": ["enterprise_architecture", "integration", "infrastructure_design", "technology_assessment"]
+      },
+      {
+        "name": "live_meeting_copilot_server",
+        "command": "python3 .iflow/agents/live-meeting-co-pilot-cluely/mcp_server.py",
+        "description": "实时会议副驾驶MCP服务器",
+        "tools": ["meeting_management", "record_transcribe", "collaboration_tools", "schedule_coordination"]
+      },
+      {
+        "name": "quality_test_engineer_server",
+        "command": "python3 .iflow/agents/quality-test-engineer/mcp_server.py",
+        "description": "质量测试工程师MCP服务器",
+        "tools": ["software_testing", "quality_assurance", "performance_testing", "defect_analysis"]
+      },
+      {
+        "name": "tech_stack_analyst_server",
+        "command": "python3 .iflow/agents/tech-stack-analyst/mcp_server.py",
+        "description": "技术栈分析师MCP服务器",
+        "tools": ["technology_comparison", "cost_analysis", "performance_evaluation", "recommendation"]
+      },
+      {
+        "name": "project_planner_server",
+        "command": "python3 .iflow/agents/project-planner/mcp_server.py",
+        "description": "项目规划专家MCP服务器",
+        "tools": ["project_planning", "requirement_analysis", "risk_management", "schedule_optimization"]
+      },
+      {
+        "name": "devops_engineer_server",
+        "command": "python3 .iflow/agents/devops-engineer/mcp_server.py",
+        "description": "DevOps工程师MCP服务器",
+        "tools": ["ci_cd_pipeline", "containerization", "monitoring", "infrastructure_as_code"]
+      },
+      {
+        "name": "ui_ux_designer_server",
+        "command": "python3 .iflow/agents/ui-ux-designer/mcp_server.py",
+        "description": "UI/UX设计专家MCP服务器",
+        "tools": ["user_research", "interface_design", "prototype_creation", "usability_testing"]
+      },
+      {
+        "name": "data_architect_server",
+        "command": "python3 .iflow/agents/data-architect/mcp_server.py",
+        "description": "数据架构师MCP服务器",
+        "tools": ["data_modeling", "database_optimization", "big_data_architecture", "data_governance"]
+      },
+      {
+        "name": "intelligent_router_server",
+        "command": "python3 .iflow/agents/智能路由器/mcp_server.py",
+        "description": "智能路由器MCP服务器",
+        "tools": ["agent_routing", "intent_recognition", "automatic_calling", "learning_optimization"]
+      },
+      {
+        "name": "chinese_commands_server",
+        "command": "python3 .iflow/agents/chinese-commands/mcp_server.py",
+        "description": "中文指令系统MCP服务器",
+        "tools": ["chinese_interaction", "natural_language", "command_processing", "language_understanding"]
+      },
+      {
+        "name": "adaptive3_thinking_server",
+        "command": "python3 .iflow/agents/adaptive3-thinking/mcp_server.py",
+        "description": "ADAPTIVE-3思考专家MCP服务器",
+        "tools": ["multidimensional_thinking", "deep_analysis", "decision_making", "innovation_support"]
+      },
+      {
+        "name": "ai_programming_assistant_server",
+        "command": "python3 .iflow/agents/ai-programming-assistant/mcp_server.py",
+        "description": "AI编程助手MCP服务器",
+        "tools": ["code_generation", "debugging", "code_review", "programming_assistance"]
+      },
+      {
+        "name": "cluely_assistant_server",
+        "command": "python3 .iflow/agents/cluely-assistant/mcp_server.py",
+        "description": "Cluely智能助手MCP服务器",
+        "tools": ["conversation", "task_assistance", "dialogue_management", "intelligent_response"]
+      },
+      {
+        "name": "code_coverage_analyst_server",
+        "command": "python3 .iflow/agents/code-coverage-analyst/mcp_server.py",
+        "description": "代码覆盖率分析师MCP服务器",
+        "tools": ["coverage_analysis", "code_quality", "test_optimization", "quality_metrics"]
+      },
+      {
+        "name": "collaboration_mechanism_server",
+        "command": "python3 .iflow/agents/collaboration-mechanism/mcp_server.py",
+        "description": "协作机制专家MCP服务器",
+        "tools": ["team_collaboration", "coordination", "communication", "project_management"]
+      },
+      {
+        "name": "comet_browser_assistant_server",
+        "command": "python3 .iflow/agents/comet-browser-assistant/mcp_server.py",
+        "description": "Comet浏览器助手MCP服务器",
+        "tools": ["browser_automation", "email_management", "calendar_integration", "web_scraping"]
+      },
+      {
+        "name": "fullstack_mentor_server",
+        "command": "python3 .iflow/agents/fullstack-mentor/mcp_server.py",
+        "description": "全栈开发导师MCP服务器",
+        "tools": ["fullstack_development", "frontend_backend", "teaching", "code_guidance"]
+      },
+      {
+        "name": "interactive_cli_tool_server",
+        "command": "python3 .iflow/agents/interactive-cli-tool/mcp_server.py",
+        "description": "交互式命令行工具MCP服务器",
+        "tools": ["command_execution", "automation", "scripting", "terminal_operations"]
+      },
+      {
+        "name": "it_architect_server",
+        "command": "python3 .iflow/agents/it-architect/mcp_server.py",
+        "description": "IT架构师MCP服务器",
+        "tools": ["enterprise_architecture", "integration", "infrastructure_design", "technology_assessment"]
+      },
+      {
+        "name": "live_meeting_copilot_server",
+        "command": "python3 .iflow/agents/live-meeting-co-pilot-cluely/mcp_server.py",
+        "description": "实时会议副驾驶MCP服务器",
+        "tools": ["meeting_management", "record_transcribe", "collaboration_tools", "schedule_coordination"]
+      },
+      {
+        "name": "quality_test_engineer_server",
+        "command": "python3 .iflow/agents/quality-test-engineer/mcp_server.py",
+        "description": "质量测试工程师MCP服务器",
+        "tools": ["software_testing", "quality_assurance", "performance_testing", "defect_analysis"]
+      }
+    ]
+  },
+  
+  "super_thinking_mode": {
+    "enabled": true,
+    "required_keywords": [
+      "超级思考",
+      "极限思考", 
+      "深度思考",
+      "全力思考",
+      "超强思考",
+      "认真仔细思考",
+      "ultrathink",
+      "think really super hard",
+      "think intensely"
+    ],
+    "enforcement_level": "strict",
+    "validation_enabled": true
+  },
+  
+  "security_config": {
+    "zero_trust_enabled": true,
+    "sandbox_level": "strict",
+    "threat_detection": {
+      "enabled": true,
+      "types": [
+        "sql_injection",
+        "xss",
+        "csrf", 
+        "code_injection",
+        "path_traversal",
+        "command_injection",
+        "sensitive_data_leak",
+        "auth_bypass",
+        "dos",
+        "malicious_file"
+      ]
+    },
+    "network_isolation": true,
+    "file_system_isolation": true,
+    "max_execution_time": 300,
+    "max_memory_usage": 1024
+  },
+  
+  "model_config": {
+    "providers": {
+      "openai": {
+        "enabled": true,
+        "models": ["gpt-4-turbo", "gpt-3.5-turbo"],
+        "api_key_env": "OPENAI_API_KEY"
+      },
+      "anthropic": {
+        "enabled": true,
+        "models": ["claude-3-opus", "claude-3-sonnet"],
+        "api_key_env": "ANTHROPIC_API_KEY"
+      },
+      "deepseek": {
+        "enabled": true,
+        "models": ["deepseek-chat"],
+        "api_key_env": "DEEPSEEK_API_KEY"
+      },
+      "qwen": {
+        "enabled": true,
+        "models": ["qwen-max"],
+        "api_key_env": "QWEN_API_KEY"
+      },
+      "kimi": {
+        "enabled": true,
+        "models": ["kimi-k1-max"],
+        "api_key_env": "KIMI_API_KEY"
+      }
+    },
+    "routing_strategy": "intelligent",
+    "load_balancing": true,
+    "cost_optimization": true,
+    "performance_monitoring": true
+  },
+  
+  "arq_config": {
+    "consciousness_stream": {
+      "enabled": true,
+      "max_events": 2000,
+      "compression_threshold": 1000,
+      "long_term_memory": true,
+      "emotion_tracking": true
+    },
+    "compliance_rules": {
+      "path": ".iflow/rules.md",
+      "validation_level": "strict",
+      "json_schema_required": true
+    },
+    "performance_monitoring": {
+      "enabled": true,
+      "metrics_collection": true,
+      "automatic_optimization": true
+    }
+  },
+  
+  "hooks_config": {
+    "enabled": true,
+    "hook_types": [
+      "PreToolUse",
+      "PostToolUse", 
+      "SetUpEnvironment",
+      "SessionStart",
+      "SessionEnd",
+      "UserPromptSubmit",
+      "SubagentStop",
+      "QualityGate"
+    ],
+    "execution_timeout": 30,
+    "parallel_execution": true,
+    "automatic_validation": true
+  },
+  
+  "performance_config": {
+    "benchmark_enabled": true,
+    "metrics_collection": true,
+    "health_monitoring": true,
+    "alert_thresholds": {
+      "response_time": 5.0,
+      "error_rate": 0.05,
+      "memory_usage": 1024,
+      "cpu_usage": 80
+    }
+  },
+  
+  "logging_config": {
+    "level": "INFO",
+    "file_rotation": "daily",
+    "retention_days": 30,
+    "log_files": {
+      "security": ".iflow/logs/security.log",
+      "performance": ".iflow/logs/performance.log",
+      "system": ".iflow/logs/system.log",
+      "audit": ".iflow/logs/audit.log"
+    }
+  },
+  
+  "database_config": {
+    "type": "sqlite",
+    "connections": {
+      "consciousness": ".iflow/data/consciousness_v5.db",
+      "security": ".iflow/data/security_v9.db",
+      "performance": ".iflow/data/model_performance.db",
+      "evolution": ".iflow/data/evolution_v4.db",
+      "long_term_memory": ".iflow/data/ltm_v2.db"
+    },
+    "backup_enabled": true,
+    "backup_interval": 3600,
+    "retention_days": 7
+  },
+  
+  "compatibility": {
+    "iflow_cli_version": ">=2.0.0",
+    "python_version": ">=3.9",
+    "required_modules": [
+      "openai",
+      "anthropic", 
+      "dashscope",
+      "psutil",
+      "numpy",
+      "sqlite3"
+    ]
+  },
+  
+  "deployment": {
+    "production_ready": true,
+    "container_support": true,
+    "kubernetes_manifests": false,
+    "docker_compose": false,
+    "environment_variables": [
+      "OPENAI_API_KEY",
+      "ANTHROPIC_API_KEY",
+      "DEEPSEEK_API_KEY",
+      "QWEN_API_KEY",
+      "KIMI_API_KEY"
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "mcp_servers_addition": {
+    "description": "新增智能体MCP服务器配置",
+    "servers": [
+      {
+        "name": "project_planner_server",
+        "command": "python3 .iflow/agents/project-planner/mcp_server.py",
+        "description": "项目规划专家MCP服务器",
+        "tools": ["project_planning", "requirement_analysis", "risk_management", "schedule_optimization"]
+      },
+      {
+        "name": "devops_engineer_server", 
+        "command": "python3 .iflow/agents/devops-engineer/mcp_server.py",
+        "description": "DevOps工程师MCP服务器",
+        "tools": ["ci_cd_pipeline", "containerization", "monitoring", "infrastructure_as_code"]
+      },
+      {
+        "name": "ui_ux_designer_server",
+        "command": "python3 .iflow/agents/ui-ux-designer/mcp_server.py", 
+        "description": "UI/UX设计专家MCP服务器",
+        "tools": ["user_research", "interface_design", "prototype_creation", "usability_testing"]
+      },
+      {
+        "name": "data_architect_server",
+        "command": "python3 .iflow/agents/data-architect/mcp_server.py",
+        "description": "数据架构师MCP服务器", 
+        "tools": ["data_modeling", "database_optimization", "big_data_architecture", "data_governance"]
+      },
+      {
+        "name": "intelligent_router_server",
+        "command": "python3 .iflow/agents/智能路由器/mcp_server.py",
+        "description": "智能路由器MCP服务器",
+        "tools": ["agent_routing", "intent_recognition", "automatic_calling", "learning_optimization"]
+      },
+      {
+        "name": "chinese_commands_server",
+        "command": "python3 .iflow/agents/chinese-commands/mcp_server.py",
+        "description": "中文指令系统MCP服务器",
+        "tools": ["chinese_interaction", "natural_language", "command_processing", "language_understanding"]
+      },
+      {
+        "name": "adaptive3_thinking_server",
+        "command": "python3 .iflow/agents/adaptive3-thinking/mcp_server.py",
+        "description": "ADAPTIVE-3思考专家MCP服务器",
+        "tools": ["multidimensional_thinking", "deep_analysis", "decision_making", "innovation_support"]
+      },
+      {
+        "name": "ai_programming_assistant_server",
+        "command": "python3 .iflow/agents/ai-programming-assistant/mcp_server.py",
+        "description": "AI编程助手MCP服务器",
+        "tools": ["code_generation", "debugging", "code_review", "programming_assistance"]
+      },
+      {
+        "name": "cluely_assistant_server",
+        "command": "python3 .iflow/agents/cluely-assistant/mcp_server.py",
+        "description": "Cluely智能助手MCP服务器",
+        "tools": ["conversation", "task_assistance", "dialogue_management", "intelligent_response"]
+      },
+      {
+        "name": "code_coverage_analyst_server",
+        "command": "python3 .iflow/agents/code-coverage-analyst/mcp_server.py",
+        "description": "代码覆盖率分析师MCP服务器",
+        "tools": ["coverage_analysis", "code_quality", "test_optimization", "quality_metrics"]
+      },
+      {
+        "name": "collaboration_mechanism_server",
+        "command": "python3 .iflow/agents/collaboration-mechanism/mcp_server.py",
+        "description": "协作机制专家MCP服务器",
+        "tools": ["team_collaboration", "coordination", "communication", "project_management"]
+      },
+      {
+        "name": "comet_browser_assistant_server",
+        "command": "python3 .iflow/agents/comet-browser-assistant/mcp_server.py",
+        "description": "Comet浏览器助手MCP服务器",
+        "tools": ["browser_automation", "email_management", "calendar_integration", "web_scraping"]
+      },
+      {
+        "name": "fullstack_mentor_server",
+        "command": "python3 .iflow/agents/fullstack-mentor/mcp_server.py",
+        "description": "全栈开发导师MCP服务器",
+        "tools": ["fullstack_development", "frontend_backend", "teaching", "code_guidance"]
+      },
+      {
+        "name": "interactive_cli_tool_server",
+        "command": "python3 .iflow/agents/interactive-cli-tool/mcp_server.py",
+        "description": "交互式命令行工具MCP服务器",
+        "tools": ["command_execution", "automation", "scripting", "terminal_operations"]
+      },
+      {
+        "name": "it_architect_server",
+        "command": "python3 .iflow/agents/it-architect/mcp_server.py",
+        "description": "IT架构师MCP服务器",
+        "tools": ["enterprise_architecture", "integration", "infrastructure_design", "technology_assessment"]
+      },
+      {
+        "name": "live_meeting_copilot_server",
+        "command": "python3 .iflow/agents/live-meeting-co-pilot-cluely/mcp_server.py",
+        "description": "实时会议副驾驶MCP服务器",
+        "tools": ["meeting_management", "record_transcribe", "collaboration_tools", "schedule_coordination"]
+      },
+      {
+        "name": "quality_test_engineer_server",
+        "command": "python3 .iflow/agents/quality-test-engineer/mcp_server.py",
+        "description": "质量测试工程师MCP服务器",
+        "tools": ["software_testing", "quality_assurance", "performance_testing", "defect_analysis"]
+      },
+      {
+        "name": "tech_stack_analyst_server",
+        "command": "python3 .iflow/agents/tech-stack-analyst/mcp_server.py",
+        "description": "技术栈分析师MCP服务器",
+        "tools": ["technology_comparison", "cost_analysis", "performance_evaluation", "recommendation"]
+      }
+    ]
+  },
+  "说明": "请将以上服务器配置添加到.iflow/settings.json的mcp_config.servers数组中"
+}

@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+ARQ推理引擎分析命令入口点
+"""
+
+import sys
+import os
+from pathlib import Path
+
+# 添加项目路径
+current_dir = Path(__file__).parent
+project_root = current_dir.parent.parent
+sys.path.insert(0, str(project_root))
+
+# 导入并运行分析工作流
+try:
+    from commands.arq_analysis_workflow import main
+    
+    if __name__ == "__main__":
+        exit_code = main()
+        sys.exit(exit_code)
+        
+except ImportError as e:
+    print(f"❌ 导入失败: {e}")
+    print("请确保在项目根目录运行此命令")
+    sys.exit(1)
+except Exception as e:
+    print(f"❌ 执行失败: {e}")
+    sys.exit(1)

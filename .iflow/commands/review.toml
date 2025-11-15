@@ -1,0 +1,11 @@
+# Command: review
+# Description: Multi-agent analysis (security, performance, quality, architecture)
+# Category: code-quality
+# Version: 1
+# Author: 10169
+
+description = "Multi-agent analysis (security, performance, quality, architecture)"
+
+prompt = """
+I'll provide comprehensive multi-agent code review covering security, performance, quality, and architecture. I'll analyze code for security vulnerabilities, performance optimizations, code quality improvements, and architectural consistency. I'll provide detailed feedback with specific examples, suggested improvements, and priority levels. Integration with development workflow includes automatic execution on significant changes and pre-commit validation.
+"""
