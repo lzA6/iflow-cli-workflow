@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-🚀 量子ARQ分析工作流 V10 (Quantum ARQ Analysis Workflow V10)
+🚀 量子ARQ分析工作流 V11 (代号："守护者")
 ===========================================================
 
 本文件是 T-MIA 凤凰架构下 `/arq-analysis` 命令的核心工作流实现。
-V10版本实现了从分析到自动执行的闭环，并深度集成了T-MIA四大内核理念，
-新增了智能意图识别，使其能够区分简单问答与复杂分析任务。
+V11版本在V10基础上，修复了参数传递与内核初始化Bug，并增强了意图识别与执行逻辑，
+使其能够智能区分简单问答与复杂分析任务，并能根据用户具体查询调整分析焦点。
 
 - **AASC (自主代理生成与协同内核)**: 通过高级意识流，实现跨领域推理。
 - **HRRK (混合检索与重排序内核)**: 融合向量、稀疏检索与知识图谱，确保信息召回的全面性与精准度。
@@ -16,7 +16,7 @@ V10版本实现了从分析到自动执行的闭环，并深度集成了T-MIA四
 你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）。
 
 作者: AI架构师团队
-版本: 10.1.0 (Bug Fix & Enhancement)
+版本: 11.1.0 (代号："守护者" - Bug Fix & Enhancement)
 日期: 2025-11-15
 """
 
@@ -30,6 +30,7 @@ import re
 import shutil
 import time
 import random
+import uuid
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Tuple
 from dataclasses import dataclass, field, asdict
@@ -42,14 +43,11 @@ try:
     if str(PROJECT_ROOT) not in sys.path:
         sys.path.insert(0, str(PROJECT_ROOT))
 except Exception as e:
-    # 如果在特殊环境中无法解析路径，则使用当前目录
     PROJECT_ROOT = Path.cwd()
     print(f"警告: 路径解析失败，回退到当前工作目录: {PROJECT_ROOT}. 错误: {e}")
 
 
-# --- V10 核心内核模拟实现 (修复NameError的关键) ---
-# 首先定义一个功能完备的模拟内核，以确保脚本在任何情况下都可运行。
-# 未来可以替换为真实的内核实现。
+# --- V11 核心内核模拟实现 (修复NameError的关键) ---
 class MockKernel:
     """一个模拟的T-MIA内核，用于保证脚本的可运行性和逻辑完整性。"""
     def __init__(self, name="MockKernel"):
@@ -61,21 +59,20 @@ class MockKernel:
         await asyncio.sleep(0.01)
 
     async def execute(self, *args, **kwargs) -> Dict[str, Any]:
-        logger.info(f"{self._name}: 正在执行，输入参数: {kwargs}")
-        await asyncio.sleep(0.05) # 模拟执行耗时
+        input_desc = kwargs.get('input_data', kwargs.get('context', {}))
+        logger.info(f"{self._name}: 正在执行，输入描述: {str(input_desc)[:100]}...")
+        await asyncio.sleep(0.05)
         return {"status": "mocked_success", "result": f"{self._name} executed successfully"}
 
-# 尝试导入真实内核，如果失败，则使用模拟内核
 try:
-    # from iflow.core.dkcm_system_v10 import DKCMKernel
-    # from iflow.core.arq_engine_v10 import ARCKernel
-    # from iflow.core.male_system_v10 import MALEKernel
-    # from iflow.core.rpfv_system_v10 import RPFVKernel
-    # 由于真实文件不存在，这里会触发ImportError
-    raise ImportError("真实的V10内核模块尚未实现。")
-    print("✅ 成功导入真实的V10核心内核。")
+    # from iflow.core.dkcm_system_v11 import DKCMKernel
+    # from iflow.core.arq_engine_v11 import ARCKernel
+    # from iflow.core.male_system_v11 import MALEKernel
+    # from iflow.core.rpfv_system_v11 import RPFVKernel
+    raise ImportError("真实的V11内核模块尚未实现。")
+    print("✅ 成功导入真实的V11核心内核。")
 except ImportError:
-    print("⚠️ 无法导入真实的V10内核，将使用功能完备的模拟内核。")
+    print("⚠️ 无法导入真实的V11内核，将使用功能完备的模拟内核。")
     DKCMKernel = type("DKCMKernel", (MockKernel,), {"__init__": lambda self: MockKernel.__init__(self, "DKCMKernel")})
     ARCKernel = type("ARCKernel", (MockKernel,), {"__init__": lambda self: MockKernel.__init__(self, "ARCKernel")})
     MALEKernel = type("MALEKernel", (MockKernel,), {"__init__": lambda self: MockKernel.__init__(self, "MALEKernel")})
@@ -84,12 +81,11 @@ except ImportError:
 
 # --- 日志配置 ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger("ARQAnalysisWorkflowV10")
+logger = logging.getLogger("ARQAnalysisWorkflowV11")
 
 # --- 数据结构定义 ---
 @dataclass
 class AnalysisConfig:
-    """分析配置"""
     workspace_path: Path
     user_query: str
     output_format: str = "json"
@@ -99,7 +95,6 @@ class AnalysisConfig:
 
 @dataclass
 class FileFinding:
-    """文件发现"""
     path: str
     category: str
     size_kb: float
@@ -107,7 +102,6 @@ class FileFinding:
 
 @dataclass
 class UpgradeAction:
-    """升级动作"""
     action_type: str
     file_path: str
     description: str
@@ -115,14 +109,12 @@ class UpgradeAction:
 
 @dataclass
 class CleanupAction:
-    """清理动作"""
     action_type: str
     file_path: str
     reason: str
 
 @dataclass
 class AnalysisReport:
-    """最终分析报告"""
     analysis_id: str
     timestamp: str
     overall_health_score: float
@@ -131,21 +123,20 @@ class AnalysisReport:
     cleanup_plan: List[CleanupAction]
     execution_summary: Dict[str, Any]
 
-class ARQAnalysisWorkflowV10:
-    """ARQ分析工作流 V10 实现"""
+class ARQAnalysisWorkflowV11:
+    """ARQ分析工作流 V11 实现"""
     def __init__(self, config: AnalysisConfig):
         self.config = config
-        self.context = {}
+        self.context = {"initial_query": config.user_query}
         self.dkcm_kernel = DKCMKernel()
         self.arc_kernel = ARCKernel()
         self.male_kernel = MALEKernel()
         self.rpfv_kernel = RPFVKernel()
-        logger.info("ARQAnalysisWorkflowV10 初始化完成，T-MIA V10内核已加载。")
+        logger.info("ARQAnalysisWorkflowV11 初始化完成，T-MIA V11内核已加载。")
 
     async def run_analysis(self) -> Dict[str, Any]:
-        """主分析流程"""
         start_time = time.time()
-        logger.info(f"🚀 开始执行ARQ分析工作流 V10 (ID: {datetime.now().isoformat()})")
+        logger.info(f"🚀 开始执行ARQ分析工作流 V11 (任务: '{self.config.user_query}')")
 
         project_state = await self._perceive_project_state()
         await self._compress_and_refine_context("感知完成", {"file_count": len(project_state)})
@@ -174,7 +165,6 @@ class ARQAnalysisWorkflowV10:
         return asdict(final_report)
 
     async def _perceive_project_state(self) -> List[FileFinding]:
-        """感知物理实在，识别与ARQ分析相关的所有文件。"""
         logger.info("感知阶段: 扫描项目结构，识别关联文件...")
         # 你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）。
         
@@ -194,7 +184,7 @@ class ARQAnalysisWorkflowV10:
                 file_path = Path(root) / file
                 relative_path = file_path.relative_to(self.config.workspace_path)
                 for category, category_patterns in patterns.items():
-                    if any(re.search(p, str(relative_path)) for p in category_patterns):
+                    if any(re.search(p, str(relative_path), re.IGNORECASE) for p in category_patterns):
                         try:
                             stat = file_path.stat()
                             file_findings.append(FileFinding(
@@ -211,7 +201,6 @@ class ARQAnalysisWorkflowV10:
         return file_findings
 
     async def _compress_and_refine_context(self, step_name: str, metrics: Dict):
-        """(AASC/DKCM) 上下文压缩与提炼"""
         logger.info(f"上下文压缩提炼: {step_name}")
         # 你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）。
         summary = f"Step '{step_name}' completed. Metrics: {json.dumps(metrics)}."
@@ -222,14 +211,13 @@ class ARQAnalysisWorkflowV10:
         )
 
     async def _hybrid_retrieval_and_reranking(self, project_state: List[FileFinding]) -> Dict:
-        """(HRRK) 混合检索与重排序"""
         logger.info("检索阶段: 执行混合检索与重排序...")
         # 你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）。
         
         retrieved_docs = []
         for finding in project_state[:15]:
             try:
-                with open(self.config.workspace_path / finding.path, 'r', encoding='utf-8') as f:
+                with open(self.config.workspace_path / finding.path, 'r', encoding='utf-8', errors='ignore') as f:
                     content = f.read(500)
                 retrieved_docs.append({
                     "source": finding.path,
@@ -248,7 +236,6 @@ class ARQAnalysisWorkflowV10:
         }
 
     async def _analyze_with_arq_kernel(self, retrieval_result: Dict) -> Dict:
-        """(ARCK) 核心分析"""
         logger.info("分析阶段: 使用ARCK内核进行深度分析...")
         # 你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）。
         
@@ -264,7 +251,6 @@ class ARQAnalysisWorkflowV10:
         }
 
     async def _generate_holistic_plan(self, project_state: List[FileFinding], arq_analysis: Dict) -> Tuple[List[UpgradeAction], List[CleanupAction]]:
-        """(MALE/POTK) 生成整体升级和清理计划"""
         logger.info("生成阶段: 创建整体升级与清理计划...")
         # 你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）。
         
@@ -317,10 +303,9 @@ class ARQAnalysisWorkflowV10:
         return upgrade_plan, cleanup_plan
 
     def _generate_report(self, arq_analysis, upgrade_plan, cleanup_plan, execution_time) -> AnalysisReport:
-        """生成最终报告"""
         logger.info("报告阶段: 生成最终分析报告...")
         return AnalysisReport(
-            analysis_id=f"arq-v10-{uuid.uuid4().hex[:8]}",
+            analysis_id=f"arq-v11-{uuid.uuid4().hex[:8]}",
             timestamp=datetime.now().isoformat(),
             overall_health_score=arq_analysis.get('overall_health_score', 0.0),
             key_findings=arq_analysis.get('findings', []),
@@ -334,7 +319,6 @@ class ARQAnalysisWorkflowV10:
         )
 
     async def _execute_plan(self, upgrade_plan: List[UpgradeAction], cleanup_plan: List[CleanupAction]):
-        """(POTK) 自动执行清理和升级计划"""
         log_prefix = "[DRY RUN] " if self.config.dry_run else ""
         logger.info(f"自动执行模式已激活。{log_prefix.strip()}")
         # 你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）。
@@ -371,15 +355,14 @@ class ARQAnalysisWorkflowV10:
 
 def is_simple_query(query: str) -> Optional[str]:
     """
-    V10 新增：智能意图识别，判断是否为简单问答。
+    V11 增强：智能意图识别，更准确地判断简单问答。
     """
-    # 匹配简单的数学表达式，允许中文标点和各种提问方式
-    query_cleaned = query.replace("？", "?").replace("啊", "").strip()
-    math_match = re.fullmatch(r"\s*([\d\s\+\-\*\/\(\)\.]+)\s*=\s*(?:几|what is|dengyu|等于)?\s*\??", query_cleaned, re.IGNORECASE)
+    query_cleaned = re.sub(r"[\s？，。啊呀吗呢]", "", query)
+    
+    math_match = re.fullmatch(r"([\d\+\-\*\/\(\)\.]+)=?(?:几|whatis|dengyu|等于)?\??", query_cleaned, re.IGNORECASE)
     if math_match:
         try:
             expression = math_match.group(1)
-            # 安全地评估表达式
             result = eval(expression, {"__builtins__": {}}, {})
             return f"这是一个简单的数学问题，答案是: {result}"
         except Exception as e:
@@ -393,7 +376,7 @@ def is_simple_query(query: str) -> Optional[str]:
 def main():
     """主函数"""
     parser = argparse.ArgumentParser(
-        description="量子ARQ分析工作流 V10",
+        description="量子ARQ分析工作流 V11",
         formatter_class=argparse.RawTextHelpFormatter
     )
     parser.add_argument("-w", "--workspace", default=str(PROJECT_ROOT), help="要分析的工作区路径")
@@ -405,8 +388,8 @@ def main():
     args = parser.parse_args()
     
     user_query_str = " ".join(args.user_query).strip()
+    logger.info(f"接收到的用户查询: '{user_query_str}'") # V11.1 新增日志
 
-    # --- V10 智能意图识别 ---
     if user_query_str:
         simple_answer = is_simple_query(user_query_str)
         if simple_answer:
@@ -427,18 +410,23 @@ def main():
         dry_run=not args.wet_run
     )
 
-    workflow = ARQAnalysisWorkflowV10(config)
+    # V11.1 修复: 确保使用正确的类名进行实例化
+    workflow = ARQAnalysisWorkflowV11(config)
     
     try:
         result = asyncio.run(workflow.run_analysis())
         
-        # 使用 default=lambda o: o.__dict__ 来序列化dataclass
-        print(json.dumps(result, indent=2, ensure_ascii=False, default=lambda o: o.__dict__ if hasattr(o, '__dict__') else str(o)))
+        def dataclass_serializer(obj):
+            if hasattr(obj, '__dict__'):
+                return obj.__dict__
+            return str(obj)
 
-        report_path = config.workspace_path / ".iflow" / "reports" / f"arq_analysis_v10_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        print(json.dumps(result, indent=2, ensure_ascii=False, default=dataclass_serializer))
+
+        report_path = config.workspace_path / ".iflow" / "reports" / f"arq_analysis_v11_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         report_path.parent.mkdir(parents=True, exist_ok=True)
         with open(report_path, 'w', encoding='utf-8') as f:
-            json.dump(result, f, indent=2, ensure_ascii=False, default=lambda o: o.__dict__ if hasattr(o, '__dict__') else str(o))
+            json.dump(result, f, indent=2, ensure_ascii=False, default=dataclass_serializer)
         logger.info(f"详细报告已保存至: {report_path}")
 
         sys.exit(0)
