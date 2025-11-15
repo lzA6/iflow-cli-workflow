@@ -152,7 +152,8 @@ def execute_cleanup(retention_plan):
                 trash_dir = PROJECT_ROOT / ".trash"
                 trash_dir.mkdir(exist_ok=True)
                 
-                backup_path = trash_dir / f"{file_path.replace('/', '_').replace('\\', '_')}"
+                backup_name = file_path.replace('/', '_').replace('\\', '_')
+                backup_path = trash_dir / backup_name
                 shutil.move(str(full_path), str(backup_path))
                 deleted_files.append(file_path)
                 print(f"🗑️ 已移动: {file_path} -> .trash/{backup_path.name}")

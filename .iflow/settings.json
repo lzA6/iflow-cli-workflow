@@ -181,15 +181,27 @@
       },
       {
         "name": "arq_engine_server",
-        "command": "python3 .iflow/core/arq_v2_enhanced_engine.py",
-        "description": "ARQ推理引擎MCP服务器",
-        "tools": ["arq_reasoning", "tool_call_precision", "compliance_check"]
+        "command": "python3 .iflow/core/arq_reasoning_engine_v11.py",
+        "description": "ARQ推理引擎V11 MCP服务器",
+        "tools": ["arq_reasoning", "tool_call_precision", "compliance_check", "metacognitive_reasoning", "emotional_reasoning", "counterfactual_analysis", "distributed_reasoning"]
       },
       {
         "name": "consciousness_system_server",
-        "command": "python3 .iflow/core/consciousness/ultimate_consciousness_system.py",
-        "description": "意识流系统MCP服务器",
-        "tools": ["context_management", "long_term_memory", "emotion_tracking"]
+        "command": "python3 .iflow/core/async_quantum_consciousness_v11.py",
+        "description": "异步量子意识流系统V11 MCP服务器",
+        "tools": ["context_management", "long_term_memory", "emotion_tracking", "cross_project_sync", "memory_compression", "metacognitive_reflection"]
+      },
+      {
+        "name": "workflow_engine_server",
+        "command": "python3 .iflow/core/workflow_engine_v11.py",
+        "description": "工作流引擎V11 MCP服务器",
+        "tools": ["workflow_execution", "adaptive_orchestration", "antifragile_optimization", "stress_management", "overcompensation"]
+      },
+      {
+        "name": "meta_governor_server",
+        "command": "python3 .iflow/core/meta_agent_governor_v11.py",
+        "description": "Meta-Agent治理层V11 MCP服务器",
+        "tools": ["agent_governance", "rule_evolution", "permission_management", "decision_optimization", "system_health_monitoring"]
       },
       {
         "name": "cognitive_core_server",

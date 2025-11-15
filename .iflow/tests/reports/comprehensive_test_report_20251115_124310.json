@@ -1,0 +1,275 @@
+{
+  "test_summary": {
+    "total_suites": 5,
+    "total_tests": 18,
+    "total_passed": 0,
+    "total_failed": 0,
+    "total_errors": 18,
+    "total_time": 0.0019986629486083984
+  },
+  "suite_results": {
+    "unit_tests": {
+      "total_tests": 5,
+      "passed_tests": 0,
+      "failed_tests": 0,
+      "error_tests": 5,
+      "skipped_tests": 0,
+      "success_rate": 0.0,
+      "total_time": 0.0009996891021728516,
+      "start_time": "2025-11-15T12:43:10.364850",
+      "end_time": "2025-11-15T12:43:10.365849",
+      "test_details": [
+        {
+          "test_name": "agi_core_initialization",
+          "test_type": "unit",
+          "status": "error",
+          "execution_time": 0.0009996891021728516,
+          "memory_usage": 0.007422447204589844,
+          "cpu_usage": 5.7,
+          "error_message": "AGICoreV11 module not available",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "arq_engine_reasoning",
+          "test_type": "unit",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.0014257431030273438,
+          "cpu_usage": 0.0,
+          "error_message": "ARQReasoningEngineV11 module not available",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "consciousness_system_operations",
+          "test_type": "unit",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.0014257431030273438,
+          "cpu_usage": 0.0,
+          "error_message": "AsyncQuantumConsciousnessV11 module not available",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "evolution_engine_operations",
+          "test_type": "unit",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.0014257431030273438,
+          "cpu_usage": 0.0,
+          "error_message": "AutonomousEvolutionEngineV11 module not available",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "workflow_engine_operations",
+          "test_type": "unit",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.0014257431030273438,
+          "cpu_usage": 0.0,
+          "error_message": "WorkflowEngineV11 module not available",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        }
+      ]
+    },
+    "integration_tests": {
+      "total_tests": 4,
+      "passed_tests": 0,
+      "failed_tests": 0,
+      "error_tests": 4,
+      "skipped_tests": 0,
+      "success_rate": 0.0,
+      "total_time": 0.0,
+      "start_time": "2025-11-15T12:43:10.365849",
+      "end_time": "2025-11-15T12:43:10.365849",
+      "test_details": [
+        {
+          "test_name": "agi_arq_integration",
+          "test_type": "integration",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "consciousness_evolution_integration",
+          "test_type": "integration",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "workflow_governance_integration",
+          "test_type": "integration",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.000152587890625,
+          "cpu_usage": 0.0,
+          "error_message": "Required modules not available",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "full_system_integration",
+          "test_type": "integration",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        }
+      ]
+    },
+    "performance_tests": {
+      "total_tests": 3,
+      "passed_tests": 0,
+      "failed_tests": 0,
+      "error_tests": 3,
+      "skipped_tests": 0,
+      "success_rate": 0.0,
+      "total_time": 0.0009989738464355469,
+      "start_time": "2025-11-15T12:43:10.365849",
+      "end_time": "2025-11-15T12:43:10.366849",
+      "test_details": [
+        {
+          "test_name": "agi_core_performance",
+          "test_type": "performance",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "arq_engine_performance",
+          "test_type": "performance",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.365849"
+        },
+        {
+          "test_name": "concurrent_performance",
+          "test_type": "performance",
+          "status": "error",
+          "execution_time": 0.0009989738464355469,
+          "memory_usage": 0.040246009826660156,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.366849"
+        }
+      ]
+    },
+    "stress_tests": {
+      "total_tests": 3,
+      "passed_tests": 0,
+      "failed_tests": 0,
+      "error_tests": 3,
+      "skipped_tests": 0,
+      "success_rate": 0.0,
+      "total_time": 0.0,
+      "start_time": "2025-11-15T12:43:10.366849",
+      "end_time": "2025-11-15T12:43:10.366849",
+      "test_details": [
+        {
+          "test_name": "memory_stress",
+          "test_type": "stress",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.0013036727905273438,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.366849"
+        },
+        {
+          "test_name": "cpu_stress",
+          "test_type": "stress",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.011749267578125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.366849"
+        },
+        {
+          "test_name": "endurance_stress",
+          "test_type": "stress",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.366849"
+        }
+      ]
+    },
+    "security_tests": {
+      "total_tests": 3,
+      "passed_tests": 0,
+      "failed_tests": 0,
+      "error_tests": 3,
+      "skipped_tests": 0,
+      "success_rate": 0.0,
+      "total_time": 0.0,
+      "start_time": "2025-11-15T12:43:10.366849",
+      "end_time": "2025-11-15T12:43:10.367850",
+      "test_details": [
+        {
+          "test_name": "input_validation_security",
+          "test_type": "security",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.366849"
+        },
+        {
+          "test_name": "permission_security",
+          "test_type": "security",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.366849"
+        },
+        {
+          "test_name": "data_leakage_security",
+          "test_type": "security",
+          "status": "error",
+          "execution_time": 0.0,
+          "memory_usage": 0.00022602081298828125,
+          "cpu_usage": 0.0,
+          "error_message": "'NoneType' object is not callable",
+          "details": {},
+          "timestamp": "2025-11-15T12:43:10.367850"
+        }
+      ]
+    }
+  }
+}

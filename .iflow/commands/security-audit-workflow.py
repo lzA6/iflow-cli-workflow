@@ -690,7 +690,7 @@ class SecurityAuditWorkflow:
             logger.error(f"生成最终报告失败: {e}")
             return {"error": str(e)}
 
-def main():
+async def main():
     """主函数"""
     parser = argparse.ArgumentParser(description="安全审计工作流")
     parser.add_argument("--workspace", "-w", default=".", help="工作空间路径")

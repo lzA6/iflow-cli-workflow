@@ -1,0 +1,60 @@
+{
+  "generation": 3,
+  "population_size": 20,
+  "best_fitness": 0.9826570746693155,
+  "evolution_history": [
+    {
+      "generation": 1,
+      "population_size": 20,
+      "best_fitness": 0.9826570746693155,
+      "average_fitness": 0.793824110518549,
+      "mutations_applied": [],
+      "innovations_discovered": [],
+      "performance_metrics": {
+        "mean_fitness": 0.793824110518549,
+        "std_fitness": 0.07955772401278786,
+        "max_fitness": 0.9826570746693155,
+        "min_fitness": 0.6790510877938718,
+        "diversity": 0.2612929458951563,
+        "convergence_rate": 0.0
+      },
+      "timestamp": "2025-11-15T12:23:35.770684"
+    },
+    {
+      "generation": 2,
+      "population_size": 20,
+      "best_fitness": 0.9826570746693155,
+      "average_fitness": 0.7938241105185491,
+      "mutations_applied": [],
+      "innovations_discovered": [],
+      "performance_metrics": {
+        "mean_fitness": 0.7938241105185491,
+        "std_fitness": 0.07955772401278785,
+        "max_fitness": 0.9826570746693155,
+        "min_fitness": 0.6790510877938718,
+        "diversity": 0.2612929458951561,
+        "convergence_rate": 0.0
+      },
+      "timestamp": "2025-11-15T12:23:35.774678"
+    },
+    {
+      "generation": 3,
+      "population_size": 20,
+      "best_fitness": 0.9826570746693155,
+      "average_fitness": 0.7938241105185491,
+      "mutations_applied": [],
+      "innovations_discovered": [],
+      "performance_metrics": {
+        "mean_fitness": 0.7938241105185491,
+        "std_fitness": 0.07955772401278788,
+        "max_fitness": 0.9826570746693155,
+        "min_fitness": 0.6790510877938718,
+        "diversity": 0.2612929458951562,
+        "convergence_rate": 0.0
+      },
+      "timestamp": "2025-11-15T12:23:35.777678"
+    }
+  ],
+  "innovation_count": 0,
+  "timestamp": "2025-11-15T12:23:35.777678"
+}
