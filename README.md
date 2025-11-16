@@ -1,9 +1,6 @@
 # 🌟 iFlow CLI - 智能工作流系统
 
 <div align="center">
-
-![iFlow CLI Logo](https://via.placeholder.com/600x200/1a1a2e/16213e?text=iFlow+CLI+%E6%99%BA%E8%83%BD%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%B3%BB%E7%BB%9F)
-
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://python.org)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)](https://github.com/lzA6/iflow-cli-workflow)
