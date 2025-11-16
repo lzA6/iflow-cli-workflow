@@ -1,0 +1,519 @@
+{
+  "生成时间": "2025-11-16T14:23:29.386996",
+  "当前版本": [
+    {
+      "文件名": "adaptive_workflow_engine_v13.py",
+      "版本号": "current",
+      "类型": "workflow_engine",
+      "大小": 34749,
+      "修改时间": "2025-11-16T09:16:14.815397"
+    },
+    {
+      "文件名": "arq_reasoning_engine_v14_quantum.py",
+      "版本号": "current",
+      "类型": "arq_reasoning_engine",
+      "大小": 27025,
+      "修改时间": "2025-11-16T11:11:10.404124"
+    },
+    {
+      "文件名": "arq_reasoning_engine_v15_quantum.py",
+      "版本号": "current",
+      "类型": "arq_reasoning_engine",
+      "大小": 52301,
+      "修改时间": "2025-11-16T14:01:11.281972"
+    },
+    {
+      "文件名": "arq_reasoning_engine_v15_quantum_chinese.py",
+      "版本号": "current",
+      "类型": "arq_reasoning_engine",
+      "大小": 13625,
+      "修改时间": "2025-11-16T14:18:55.996088"
+    },
+    {
+      "文件名": "consciousness_system_v13_quantum.py",
+      "版本号": "current",
+      "类型": "consciousness_system",
+      "大小": 20261,
+      "修改时间": "2025-11-16T10:10:34.113543"
+    },
+    {
+      "文件名": "consciousness_system_v15_quantum.py",
+      "版本号": "current",
+      "类型": "consciousness_system",
+      "大小": 49370,
+      "修改时间": "2025-11-16T14:02:28.311674"
+    },
+    {
+      "文件名": "knowledge_base_manager.py",
+      "版本号": "current",
+      "类型": "knowledge_base_manager",
+      "大小": 28253,
+      "修改时间": "2025-11-16T11:55:33.997990"
+    },
+    {
+      "文件名": "memory_manager_v13_quantum.py",
+      "版本号": "current",
+      "类型": "memory_manager",
+      "大小": 21630,
+      "修改时间": "2025-11-16T10:18:29.809604"
+    },
+    {
+      "文件名": "multi_agent_collaboration_v15_quantum.py",
+      "版本号": "current",
+      "类型": "multi_agent_collaboration",
+      "大小": 51527,
+      "修改时间": "2025-11-16T14:04:23.225110"
+    },
+    {
+      "文件名": "refrag_system_v4_quantum.py",
+      "版本号": "current",
+      "类型": "refrag_system",
+      "大小": 47418,
+      "修改时间": "2025-11-16T14:03:51.545144"
+    },
+    {
+      "文件名": "usage_tracker.py",
+      "版本号": "current",
+      "类型": "usage_tracker",
+      "大小": 20036,
+      "修改时间": "2025-11-16T11:54:49.081861"
+    },
+    {
+      "文件名": "workflow_engine_v13_quantum.py",
+      "版本号": "current",
+      "类型": "workflow_engine",
+      "大小": 25520,
+      "修改时间": "2025-11-16T10:07:56.002582"
+    },
+    {
+      "文件名": "workflow_engine_v15_quantum.py",
+      "版本号": "current",
+      "类型": "workflow_engine",
+      "大小": 64826,
+      "修改时间": "2025-11-16T13:41:17.034307"
+    }
+  ],
+  "备份版本": [
+    {
+      "文件名": "anti_fragile_system_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 33739,
+      "修改时间": "2025-11-16T09:20:08.656400"
+    },
+    {
+      "文件名": "continuous_learning_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 36886,
+      "修改时间": "2025-11-16T09:28:13.488050"
+    },
+    {
+      "文件名": "hooks_system_v12_ultra_enhanced.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 51201,
+      "修改时间": "2025-11-16T05:16:17.199548"
+    },
+    {
+      "文件名": "hrrk_kernel_v2.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 27510,
+      "修改时间": "2025-11-16T09:55:08.540334"
+    },
+    {
+      "文件名": "intelligent_router_engine.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 19555,
+      "修改时间": "2025-11-15T00:28:31.553343"
+    },
+    {
+      "文件名": "intelligent_training_system.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 20210,
+      "修改时间": "2025-11-16T14:20:12.576704"
+    },
+    {
+      "文件名": "knowledge_base_ai_enhancer.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 20858,
+      "修改时间": "2025-11-16T11:48:32.152417"
+    },
+    {
+      "文件名": "knowledge_base_service.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 9464,
+      "修改时间": "2025-11-16T11:35:44.105117"
+    },
+    {
+      "文件名": "male_system.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 25427,
+      "修改时间": "2025-11-16T07:31:56.449402"
+    },
+    {
+      "文件名": "metacognition_layer_v2.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 25063,
+      "修改时间": "2025-11-16T11:08:05.696616"
+    },
+    {
+      "文件名": "multimodal_learning_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 42560,
+      "修改时间": "2025-11-16T09:24:28.260677"
+    },
+    {
+      "文件名": "optimized_fusion_cache.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 18465,
+      "修改时间": "2025-11-13T21:50:36.810647"
+    },
+    {
+      "文件名": "parallel_agent_executor.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 25251,
+      "修改时间": "2025-11-13T21:52:44.490258"
+    },
+    {
+      "文件名": "refrag_arq_integration.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 12047,
+      "修改时间": "2025-11-16T05:43:35.461041"
+    },
+    {
+      "文件名": "self_healing_system_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 40501,
+      "修改时间": "2025-11-16T09:32:24.959886"
+    },
+    {
+      "文件名": "session_cache_manager.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 21665,
+      "修改时间": "2025-11-16T14:21:21.518531"
+    },
+    {
+      "文件名": "smart_cache.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 8277,
+      "修改时间": "2025-11-16T06:49:01.718838"
+    },
+    {
+      "文件名": "v13_integration_engine.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 33073,
+      "修改时间": "2025-11-16T09:44:24.110185"
+    },
+    {
+      "文件名": "cleanup_old_versions.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 13474,
+      "修改时间": "2025-11-16T14:23:24.797240"
+    },
+    {
+      "文件名": "start_kb.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 2396,
+      "修改时间": "2025-11-16T12:29:30.166526"
+    },
+    {
+      "文件名": "verify_v15.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "大小": 1420,
+      "修改时间": "2025-11-16T13:07:14.083456"
+    }
+  ],
+  "文件详情": [
+    {
+      "文件名": "adaptive_workflow_engine_v13.py",
+      "版本号": "current",
+      "类型": "workflow_engine",
+      "状态": "current",
+      "大小": 34749,
+      "修改时间": "2025-11-16T09:16:14.815397"
+    },
+    {
+      "文件名": "anti_fragile_system_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 33739,
+      "修改时间": "2025-11-16T09:20:08.656400"
+    },
+    {
+      "文件名": "arq_reasoning_engine_v14_quantum.py",
+      "版本号": "current",
+      "类型": "arq_reasoning_engine",
+      "状态": "current",
+      "大小": 27025,
+      "修改时间": "2025-11-16T11:11:10.404124"
+    },
+    {
+      "文件名": "arq_reasoning_engine_v15_quantum.py",
+      "版本号": "current",
+      "类型": "arq_reasoning_engine",
+      "状态": "current",
+      "大小": 52301,
+      "修改时间": "2025-11-16T14:01:11.281972"
+    },
+    {
+      "文件名": "arq_reasoning_engine_v15_quantum_chinese.py",
+      "版本号": "current",
+      "类型": "arq_reasoning_engine",
+      "状态": "current",
+      "大小": 13625,
+      "修改时间": "2025-11-16T14:18:55.996088"
+    },
+    {
+      "文件名": "consciousness_system_v13_quantum.py",
+      "版本号": "current",
+      "类型": "consciousness_system",
+      "状态": "current",
+      "大小": 20261,
+      "修改时间": "2025-11-16T10:10:34.113543"
+    },
+    {
+      "文件名": "consciousness_system_v15_quantum.py",
+      "版本号": "current",
+      "类型": "consciousness_system",
+      "状态": "current",
+      "大小": 49370,
+      "修改时间": "2025-11-16T14:02:28.311674"
+    },
+    {
+      "文件名": "continuous_learning_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 36886,
+      "修改时间": "2025-11-16T09:28:13.488050"
+    },
+    {
+      "文件名": "hooks_system_v12_ultra_enhanced.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 51201,
+      "修改时间": "2025-11-16T05:16:17.199548"
+    },
+    {
+      "文件名": "hrrk_kernel_v2.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 27510,
+      "修改时间": "2025-11-16T09:55:08.540334"
+    },
+    {
+      "文件名": "intelligent_router_engine.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 19555,
+      "修改时间": "2025-11-15T00:28:31.553343"
+    },
+    {
+      "文件名": "intelligent_training_system.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 20210,
+      "修改时间": "2025-11-16T14:20:12.576704"
+    },
+    {
+      "文件名": "knowledge_base_ai_enhancer.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 20858,
+      "修改时间": "2025-11-16T11:48:32.152417"
+    },
+    {
+      "文件名": "knowledge_base_manager.py",
+      "版本号": "current",
+      "类型": "knowledge_base_manager",
+      "状态": "current",
+      "大小": 28253,
+      "修改时间": "2025-11-16T11:55:33.997990"
+    },
+    {
+      "文件名": "knowledge_base_service.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 9464,
+      "修改时间": "2025-11-16T11:35:44.105117"
+    },
+    {
+      "文件名": "male_system.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 25427,
+      "修改时间": "2025-11-16T07:31:56.449402"
+    },
+    {
+      "文件名": "memory_manager_v13_quantum.py",
+      "版本号": "current",
+      "类型": "memory_manager",
+      "状态": "current",
+      "大小": 21630,
+      "修改时间": "2025-11-16T10:18:29.809604"
+    },
+    {
+      "文件名": "metacognition_layer_v2.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 25063,
+      "修改时间": "2025-11-16T11:08:05.696616"
+    },
+    {
+      "文件名": "multimodal_learning_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 42560,
+      "修改时间": "2025-11-16T09:24:28.260677"
+    },
+    {
+      "文件名": "multi_agent_collaboration_v15_quantum.py",
+      "版本号": "current",
+      "类型": "multi_agent_collaboration",
+      "状态": "current",
+      "大小": 51527,
+      "修改时间": "2025-11-16T14:04:23.225110"
+    },
+    {
+      "文件名": "optimized_fusion_cache.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 18465,
+      "修改时间": "2025-11-13T21:50:36.810647"
+    },
+    {
+      "文件名": "parallel_agent_executor.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 25251,
+      "修改时间": "2025-11-13T21:52:44.490258"
+    },
+    {
+      "文件名": "refrag_arq_integration.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 12047,
+      "修改时间": "2025-11-16T05:43:35.461041"
+    },
+    {
+      "文件名": "refrag_system_v4_quantum.py",
+      "版本号": "current",
+      "类型": "refrag_system",
+      "状态": "current",
+      "大小": 47418,
+      "修改时间": "2025-11-16T14:03:51.545144"
+    },
+    {
+      "文件名": "self_healing_system_v13.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 40501,
+      "修改时间": "2025-11-16T09:32:24.959886"
+    },
+    {
+      "文件名": "session_cache_manager.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 21665,
+      "修改时间": "2025-11-16T14:21:21.518531"
+    },
+    {
+      "文件名": "smart_cache.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 8277,
+      "修改时间": "2025-11-16T06:49:01.718838"
+    },
+    {
+      "文件名": "usage_tracker.py",
+      "版本号": "current",
+      "类型": "usage_tracker",
+      "状态": "current",
+      "大小": 20036,
+      "修改时间": "2025-11-16T11:54:49.081861"
+    },
+    {
+      "文件名": "v13_integration_engine.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 33073,
+      "修改时间": "2025-11-16T09:44:24.110185"
+    },
+    {
+      "文件名": "workflow_engine_v13_quantum.py",
+      "版本号": "current",
+      "类型": "workflow_engine",
+      "状态": "current",
+      "大小": 25520,
+      "修改时间": "2025-11-16T10:07:56.002582"
+    },
+    {
+      "文件名": "workflow_engine_v15_quantum.py",
+      "版本号": "current",
+      "类型": "workflow_engine",
+      "状态": "current",
+      "大小": 64826,
+      "修改时间": "2025-11-16T13:41:17.034307"
+    },
+    {
+      "文件名": "cleanup_old_versions.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 13474,
+      "修改时间": "2025-11-16T14:23:24.797240"
+    },
+    {
+      "文件名": "start_kb.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 2396,
+      "修改时间": "2025-11-16T12:29:30.166526"
+    },
+    {
+      "文件名": "verify_v15.py",
+      "版本号": "current",
+      "类型": "unknown",
+      "状态": "backup",
+      "大小": 1420,
+      "修改时间": "2025-11-16T13:07:14.083456"
+    }
+  ]
+}

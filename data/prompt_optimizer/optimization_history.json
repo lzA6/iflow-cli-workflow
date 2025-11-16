@@ -1,0 +1,14 @@
+[
+  {
+    "record_id": "76e68615-3362-4c7e-9225-9183e5e53b5e",
+    "user_id": "default_user",
+    "original_prompt": "\"帮我写代码\"",
+    "optimized_prompt": "\"帮我写代码\" 请提供相关背景信息。 请明确输出格式。",
+    "optimization_mode": "professional",
+    "user_feedback": null,
+    "user_accepted": false,
+    "optimization_reasoning": "优化步骤: 补充必要信息 → 添加专业术语和技术细节",
+    "timestamp": "2025-11-17T04:39:49.900238",
+    "processing_time": 0.0019969940185546875
+  }
+]

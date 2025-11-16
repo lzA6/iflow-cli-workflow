@@ -1,4 +1,4 @@
-Apache License
+                                 Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -34,8 +34,8 @@ Apache License
       "Work" shall mean the work of authorship, whether in Source or
       Object form, made available under the License, as indicated by a
       copyright notice that is included in or attached to the work
-      (which shall not include communications that are clearly marked as
-      "not a work").
+      (which shall not include communications that are solely written
+      by You).
 
       "Derivative Works" shall mean any work, whether in Source or Object
       form, that is based upon (or derived from) the Work and for which the
@@ -56,8 +56,12 @@ Apache License
       communication on electronic mailing lists, source code control
       systems, and issue tracking systems that are managed by, or on behalf
       of, the Licensor for the purpose of discussing and improving the Work,
-      but excluding communication that is clearly marked as
-      "not a contribution".
+      but excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
 
    2. Grant of Copyright License. Subject to the terms and conditions of
       this License, each Contributor hereby grants to You a perpetual,

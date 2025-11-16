@@ -12,6 +12,18 @@
       "agent_path": ".iflow/agents/arq-analyzer",
       "parameters": ["--detailed", "--performance", "--compliance", "--optimization"]
     },
+    "arp-prompt": {
+      "command": "/arp-prompt",
+      "description": "ARP智能提示词优化器",
+      "agent_path": ".iflow/commands/arp-prompt",
+      "parameters": ["--mode", "--user-id", "--interactive", "--stats", "--export", "--help", "--version"]
+    },
+    "comprehensive-upgrade": {
+      "command": "/comprehensive-upgrade",
+      "description": "全自动化项目审查和升级 - AI驱动的智能升级系统",
+      "agent_path": ".iflow/commands/comprehensive-upgrade",
+      "parameters": ["--workspace", "--auto-fix", "--no-backup", "--dry-run", "--verbose", "--config"]
+    },
     "security-audit": {
       "command": "/security-audit", 
       "description": "安全框架全面审计",
@@ -65,6 +77,12 @@
       "description": "AI编程辅助专家",
       "agent_path": ".iflow/agents/ai-programming-assistant",
       "parameters": ["--code", "--debug", "--review", "--optimize"]
+    },
+    "sc-test": {
+      "command": "/sc:test",
+      "description": "增强版系统测试和分析工具",
+      "agent_path": ".iflow/commands/sc/mcp_server.py",
+      "parameters": ["--interactive", "--no-interactive", "--no-ai-awareness", "--no-deep-analysis", "--no-optimization-report", "--no-structure-comparison", "--project-root"]
     },
     "chinese-commands": {
       "command": "/chinese-commands",
@@ -187,9 +205,9 @@
       },
       {
         "name": "consciousness_system_server",
-        "command": "python3 .iflow/core/async_quantum_consciousness_v11.py",
-        "description": "异步量子意识流系统V11 MCP服务器",
-        "tools": ["context_management", "long_term_memory", "emotion_tracking", "cross_project_sync", "memory_compression", "metacognitive_reflection"]
+        "command": "python3 .iflow/core/async_quantum_consciousness_v12_ultra_enhanced.py",
+        "description": "异步量子意识流系统V12 Ultra Enhanced MCP服务器",
+        "tools": ["context_management", "long_term_memory", "emotion_tracking", "cross_project_sync", "memory_compression", "metacognitive_reflection", "quantum_parallel_processing", "ultra_deep_thinking"]
       },
       {
         "name": "workflow_engine_server",
@@ -388,6 +406,12 @@
         "command": "python3 .iflow/agents/tech-stack-analyst/mcp_server.py",
         "description": "技术栈分析师MCP服务器",
         "tools": ["technology_comparison", "cost_analysis", "performance_evaluation", "recommendation"]
+      },
+      {
+        "name": "arp_prompt_optimizer_server",
+        "command": "python3 .iflow/commands/arp-prompt-mcp-server.py",
+        "description": "ARP智能提示词优化器MCP服务器",
+        "tools": ["optimize_prompt", "get_user_stats", "export_user_data"]
       },
       {
         "name": "project_planner_server",

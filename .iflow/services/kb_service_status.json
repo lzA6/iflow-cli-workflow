@@ -1,0 +1,11 @@
+{
+  "pid": 60656,
+  "start_time": "2025-11-16T11:59:29.332501",
+  "config": {
+    "host": "127.0.0.1",
+    "port": 5000,
+    "auto_restart": true,
+    "max_memory_mb": 512,
+    "health_check_interval": 30
+  }
+}

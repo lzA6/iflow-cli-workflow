@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+全自动化项目审查和升级命令入口点
+Comprehensive Project Upgrade Command Entry Point
+"""
+
+import sys
+import os
+import asyncio
+from pathlib import Path
+
+# 添加项目路径
+current_dir = Path(__file__).parent
+project_root = current_dir.parent.parent
+sys.path.insert(0, str(project_root))
+
+# 导入并运行升级工作流
+try:
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("comprehensive_project_upgrade_workflow", 
+                                               os.path.join(current_dir, "comprehensive-project-upgrade-workflow.py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    main = module.main
+    
+    # 直接执行，不依赖 __name__ 检查
+    async def run_upgrade():
+        """直接运行升级工作流"""
+        try:
+            exit_code = await main()
+            return exit_code
+        except Exception as e:
+            print(f"❌ 升级执行失败: {e}")
+            return 1
+    
+    # 如果作为脚本直接运行
+    if len(sys.argv) > 0 and 'comprehensive-upgrade' in sys.argv[0]:
+        exit_code = asyncio.run(run_upgrade())
+        sys.exit(exit_code)
+    elif __name__ == "__main__":
+        exit_code = asyncio.run(main())
+        sys.exit(exit_code)
+    else:
+        # 被导入时，直接执行
+        exit_code = asyncio.run(run_upgrade())
+        sys.exit(exit_code)
+        
+except ImportError as e:
+    print(f"❌ 导入失败: {e}")
+    print("请确保在项目根目录运行此命令")
+    sys.exit(1)
+except Exception as e:
+    print(f"❌ 执行失败: {e}")
+    sys.exit(1)

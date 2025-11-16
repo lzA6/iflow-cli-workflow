@@ -1,0 +1,34 @@
+{
+  "ai_context": {
+    "status": "completed",
+    "message": "AI信息已强制传递"
+  },
+  "structure_analysis": {
+    "status": "completed",
+    "modules_found": 29
+  },
+  "deep_scan": {
+    "status": "completed",
+    "issues_found": 0
+  },
+  "feature_analysis": {
+    "status": "completed",
+    "features_analyzed": 29
+  },
+  "decision_records": {
+    "status": "completed",
+    "decisions": 5
+  },
+  "optimization_report": {
+    "status": "completed",
+    "recommendations": 8
+  },
+  "interactive_analysis": {
+    "status": "completed",
+    "user_interactions": 0
+  },
+  "final_report": {
+    "status": "completed",
+    "summary": "8步分析已完成"
+  }
+}

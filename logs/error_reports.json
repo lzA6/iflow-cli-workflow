@@ -1,0 +1,40 @@
+[
+  {
+    "error_type": "NetworkError",
+    "error_code": "NetworkError",
+    "message": "测试网络错误",
+    "category": "network",
+    "severity": "medium",
+    "recoverable": true,
+    "retry_count": 0,
+    "timestamp": "2025-11-16T16:40:19.732691",
+    "context": {
+      "user_id": null,
+      "session_id": null,
+      "request_id": null,
+      "operation": null,
+      "component": null,
+      "additional_data": {}
+    },
+    "cause": null
+  },
+  {
+    "error_type": "NetworkError",
+    "error_code": "NetworkError",
+    "message": "可恢复错误",
+    "category": "network",
+    "severity": "medium",
+    "recoverable": true,
+    "retry_count": 0,
+    "timestamp": "2025-11-16T16:40:19.734524",
+    "context": {
+      "user_id": null,
+      "session_id": null,
+      "request_id": null,
+      "operation": null,
+      "component": null,
+      "additional_data": {}
+    },
+    "cause": null
+  }
+]

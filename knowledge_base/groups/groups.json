@@ -1,0 +1,17 @@
+[
+  {
+    "name": "default",
+    "description": "默认知识组",
+    "created_at": "2025-11-16T12:11:35.452547"
+  },
+  {
+    "name": "documents",
+    "description": "文档资料",
+    "created_at": "2025-11-16T12:11:35.452547"
+  },
+  {
+    "name": "code",
+    "description": "代码片段",
+    "created_at": "2025-11-16T12:11:35.452547"
+  }
+]

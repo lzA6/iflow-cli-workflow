@@ -1,0 +1,41 @@
+{
+  "test_user": {
+    "user_id": "test_user",
+    "name": "用户_test_use",
+    "expertise_level": "intermediate",
+    "preferred_language": "zh",
+    "preferred_complexity": "balanced",
+    "interaction_style": "direct",
+    "field_of_interest": [],
+    "optimization_preferences": {},
+    "word_associations": {
+      "帮我写代码": [],
+      "分析数据": []
+    },
+    "semantic_patterns": {
+      "帮我写代码": 0.1,
+      "分析数据": 0.30000000000000004
+    },
+    "context_preferences": {},
+    "mode_preferences": {
+      "standard": 1,
+      "professional": 1,
+      "beginner": 1,
+      "ai_format": 1
+    },
+    "satisfaction_patterns": {
+      "standard_satisfaction": 5
+    },
+    "improvement_preferences": [
+      "完整性提升",
+      "个性化适配",
+      "语义增强"
+    ],
+    "created_at": "2025-11-17T05:58:34.810395",
+    "last_updated": "2025-11-17T05:58:34.825395",
+    "total_interactions": 4,
+    "satisfaction_scores": [
+      5
+    ]
+  }
+}

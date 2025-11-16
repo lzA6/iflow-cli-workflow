@@ -1,0 +1,16 @@
+{
+  "default_user": {
+    "user_id": "default_user",
+    "name": "用户_default_",
+    "expertise_level": "intermediate",
+    "preferred_language": "zh",
+    "preferred_complexity": "balanced",
+    "interaction_style": "direct",
+    "field_of_interest": [],
+    "optimization_preferences": {},
+    "created_at": "2025-11-17T04:39:49.898241",
+    "last_updated": "2025-11-17T04:39:49.898241",
+    "total_interactions": 1,
+    "satisfaction_scores": []
+  }
+}

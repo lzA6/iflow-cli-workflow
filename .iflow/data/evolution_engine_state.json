@@ -1,60 +1,60 @@
 {
   "generation": 3,
   "population_size": 20,
-  "best_fitness": 0.9826570746693155,
+  "best_fitness": 0.9639952343318847,
   "evolution_history": [
     {
       "generation": 1,
       "population_size": 20,
-      "best_fitness": 0.9826570746693155,
-      "average_fitness": 0.793824110518549,
+      "best_fitness": 0.9639952343318847,
+      "average_fitness": 0.8427053633666594,
       "mutations_applied": [],
       "innovations_discovered": [],
       "performance_metrics": {
-        "mean_fitness": 0.793824110518549,
-        "std_fitness": 0.07955772401278786,
-        "max_fitness": 0.9826570746693155,
-        "min_fitness": 0.6790510877938718,
-        "diversity": 0.2612929458951563,
+        "mean_fitness": 0.8427053633666594,
+        "std_fitness": 0.07851363943974352,
+        "max_fitness": 0.9639952343318847,
+        "min_fitness": 0.6603386797669014,
+        "diversity": 0.24241088535873012,
         "convergence_rate": 0.0
       },
-      "timestamp": "2025-11-15T12:23:35.770684"
+      "timestamp": "2025-11-15T13:22:02.039102"
     },
     {
       "generation": 2,
       "population_size": 20,
-      "best_fitness": 0.9826570746693155,
-      "average_fitness": 0.7938241105185491,
+      "best_fitness": 0.9639952343318847,
+      "average_fitness": 0.8427053633666594,
       "mutations_applied": [],
       "innovations_discovered": [],
       "performance_metrics": {
-        "mean_fitness": 0.7938241105185491,
-        "std_fitness": 0.07955772401278785,
-        "max_fitness": 0.9826570746693155,
-        "min_fitness": 0.6790510877938718,
-        "diversity": 0.2612929458951561,
+        "mean_fitness": 0.8427053633666594,
+        "std_fitness": 0.07851363943974352,
+        "max_fitness": 0.9639952343318847,
+        "min_fitness": 0.6603386797669014,
+        "diversity": 0.24241088535873012,
         "convergence_rate": 0.0
       },
-      "timestamp": "2025-11-15T12:23:35.774678"
+      "timestamp": "2025-11-15T13:22:02.042103"
     },
     {
       "generation": 3,
       "population_size": 20,
-      "best_fitness": 0.9826570746693155,
-      "average_fitness": 0.7938241105185491,
+      "best_fitness": 0.9639952343318847,
+      "average_fitness": 0.8427053633666594,
       "mutations_applied": [],
       "innovations_discovered": [],
       "performance_metrics": {
-        "mean_fitness": 0.7938241105185491,
-        "std_fitness": 0.07955772401278788,
-        "max_fitness": 0.9826570746693155,
-        "min_fitness": 0.6790510877938718,
-        "diversity": 0.2612929458951562,
+        "mean_fitness": 0.8427053633666594,
+        "std_fitness": 0.07851363943974352,
+        "max_fitness": 0.9639952343318847,
+        "min_fitness": 0.6603386797669014,
+        "diversity": 0.2424108853587301,
         "convergence_rate": 0.0
       },
-      "timestamp": "2025-11-15T12:23:35.777678"
+      "timestamp": "2025-11-15T13:22:02.045169"
     }
   ],
   "innovation_count": 0,
-  "timestamp": "2025-11-15T12:23:35.777678"
+  "timestamp": "2025-11-15T13:22:02.045169"
 }

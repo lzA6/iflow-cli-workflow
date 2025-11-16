@@ -1,0 +1,145 @@
+[
+  {
+    "record_id": "af63453f-4e39-4bb0-a3ce-6be858690845",
+    "user_id": "test_user",
+    "original_prompt": "帮我写代码",
+    "analysis_result": {
+      "original_prompt": "帮我写代码",
+      "word_count": 1,
+      "sentence_count": 1,
+      "key_concepts": [
+        "帮我写代码"
+      ],
+      "semantic_complexity": 0.2,
+      "clarity_score": 0.8999999999999999,
+      "completeness_score": 0.0,
+      "context_indicators": [
+        "技术"
+      ],
+      "user_intent": "创建",
+      "domain_specificity": 0.0,
+      "word_associations": {
+        "帮我写代码": []
+      }
+    },
+    "optimized_prompt": "帮我写代码 请从技术角度进行详细分析。 请提供具体的实现步骤和注意事项。 请直接给出核心答案。",
+    "optimization_mode": "standard",
+    "user_feedback": 5,
+    "user_accepted": true,
+    "optimization_reasoning": "优化步骤: 补充必要信息 → 应用个性化适配 → 语义关联增强",
+    "improvements_applied": [
+      "完整性提升",
+      "个性化适配",
+      "语义增强"
+    ],
+    "confidence": 0.8899999999999999,
+    "timestamp": "2025-11-17T05:58:34.813396",
+    "processing_time": 0.003000974655151367,
+    "interaction_type": "initial_optimization"
+  },
+  {
+    "record_id": "97be8c07-b61a-4111-aba7-7814405a7dec",
+    "user_id": "test_user",
+    "original_prompt": "分析数据",
+    "analysis_result": {
+      "original_prompt": "分析数据",
+      "word_count": 1,
+      "sentence_count": 1,
+      "key_concepts": [
+        "分析数据"
+      ],
+      "semantic_complexity": 0.5800000000000001,
+      "clarity_score": 0.7999999999999999,
+      "completeness_score": 0.0,
+      "context_indicators": [],
+      "user_intent": "分析",
+      "domain_specificity": 0.0,
+      "word_associations": {
+        "分析数据": []
+      }
+    },
+    "optimized_prompt": "分析数据 请包含分析方法和评估标准。",
+    "optimization_mode": "professional",
+    "user_feedback": null,
+    "user_accepted": false,
+    "optimization_reasoning": "优化步骤: 补充必要信息 → 语义关联增强 → 添加专业术语和技术细节",
+    "improvements_applied": [
+      "完整性提升",
+      "语义增强",
+      "专业化增强"
+    ],
+    "confidence": 0.8799999999999999,
+    "timestamp": "2025-11-17T05:58:34.817396",
+    "processing_time": 0.0,
+    "interaction_type": "mode_switch"
+  },
+  {
+    "record_id": "7d0a6d43-c66d-4753-99b1-25a1b598ffd6",
+    "user_id": "test_user",
+    "original_prompt": "分析数据",
+    "analysis_result": {
+      "original_prompt": "分析数据",
+      "word_count": 1,
+      "sentence_count": 1,
+      "key_concepts": [
+        "分析数据"
+      ],
+      "semantic_complexity": 0.5800000000000001,
+      "clarity_score": 0.7999999999999999,
+      "completeness_score": 0.0,
+      "context_indicators": [],
+      "user_intent": "分析",
+      "domain_specificity": 0.0,
+      "word_associations": {
+        "分析数据": []
+      }
+    },
+    "optimized_prompt": "分析数据 关于'分析数据'，请用简单的语言解释。 请用生活中的例子来说明，让初学者容易理解。",
+    "optimization_mode": "beginner",
+    "user_feedback": null,
+    "user_accepted": false,
+    "optimization_reasoning": "优化步骤: 简化表达，增加解释",
+    "improvements_applied": [
+      "简化表达"
+    ],
+    "confidence": 0.8799999999999999,
+    "timestamp": "2025-11-17T05:58:34.820396",
+    "processing_time": 0.0,
+    "interaction_type": "mode_switch"
+  },
+  {
+    "record_id": "744ed55f-2031-4cf5-ad86-2b8054a34351",
+    "user_id": "test_user",
+    "original_prompt": "分析数据",
+    "analysis_result": {
+      "original_prompt": "分析数据",
+      "word_count": 1,
+      "sentence_count": 1,
+      "key_concepts": [
+        "分析数据"
+      ],
+      "semantic_complexity": 0.5800000000000001,
+      "clarity_score": 0.7999999999999999,
+      "completeness_score": 0.0,
+      "context_indicators": [],
+      "user_intent": "分析",
+      "domain_specificity": 0.0,
+      "word_associations": {
+        "分析数据": []
+      }
+    },
+    "optimized_prompt": "你是专业的AI助手。 ## 分析对象 分析数据 ## 分析维度 1. 技术分析 2. 业务分析 3. 风险评估。",
+    "optimization_mode": "ai_format",
+    "user_feedback": null,
+    "user_accepted": false,
+    "optimization_reasoning": "优化步骤: 语义关联增强 → 结构化格式，明确指令",
+    "improvements_applied": [
+      "语义增强",
+      "AI格式化"
+    ],
+    "confidence": 0.8799999999999999,
+    "timestamp": "2025-11-17T05:58:34.823396",
+    "processing_time": 0.0,
+    "interaction_type": "mode_switch"
+  }
+]

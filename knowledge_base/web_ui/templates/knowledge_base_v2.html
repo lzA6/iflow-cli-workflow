@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iFlow 量子知识库 V2</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- D3.js for visualization -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Socket.IO -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    
+    <!-- Custom styles -->
+    <style>
+        .dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+        .dark .text-gray-900 {
+            color: #e2e8f0;
+        }
+        .dark .text-gray-600 {
+            color: #cbd5e0;
+        }
+        .dark .border-gray-200 {
+            border-color: #4a5568;
+        }
+        .dark .bg-gray-50 {
+            background-color: #2d3748;
+        }
+        .knowledge-card {
+            transition: all 0.3s ease;
+        }
+        .knowledge-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .search-highlight {
+            background-color: #fef3c7;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .typing-indicator {
+            display: inline-block;
+            animation: typing 1.5s infinite;
+        }
+        @keyframes typing {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+        .graph-container {
+            height: 600px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .node {
+            cursor: pointer;
+        }
+        .link {
+            stroke: #999;
+            stroke-opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-brain text-indigo-600 text-2xl mr-3"></i>
+                    <h1 class="text-xl font-semibold">iFlow 量子知识库 V2</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="graphViewBtn" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                        <i class="fas fa-project-diagram mr-2"></i>图谱视图
+                    </button>
+                    <div class="relative">
+                        <span class="absolute top-0 right-0 h-3 w-3 bg-green-400 rounded-full animate-pulse"></span>
+                        <i class="fas fa-wifi text-gray-600"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Search Section -->
+        <section class="mb-8">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h2 class="text-lg font-semibold mb-4">
+                    <i class="fas fa-search text-indigo-600 mr-2"></i>
+                    量子搜索
+                </h2>
+                <div class="flex space-x-4">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="输入搜索查询..." 
+                        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                    >
+                    <select id="typeFilter" class="px-4 py-2 border border-gray-300 rounded-lg">
+                        <option value="">所有类型</option>
+                        <option value="fact">事实</option>
+                        <option value="concept">概念</option>
+                        <option value="procedure">流程</option>
+                        <option value="rule">规则</option>
+                        <option value="relationship">关系</option>
+                    </select>
+                    <button id="searchBtn" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                        <i class="fas fa-search mr-2"></i>搜索
+                    </button>
+                </div>
+                <div id="searchStats" class="mt-4 text-sm text-gray-600 hidden">
+                    找到 <span id="resultCount">0</span> 个结果，用时 <span id="searchTime">0</span>ms
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                    <button id="addKnowledgeBtn" class="w-full text-left">
+                        <i class="fas fa-plus-circle text-green-600 text-xl mb-2"></i>
+                        <h3 class="font-semibold">添加知识</h3>
+                        <p class="text-sm text-gray-600">创建新知识条目</p>
+                    </button>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                    <div class="text-left">
+                        <i class="fas fa-network-wired text-blue-600 text-xl mb-2"></i>
+                        <h3 class="font-semibold">知识图谱</h3>
+                        <p class="text-sm text-gray-600">探索知识关系</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                    <div class="text-left">
+                        <i class="fas fa-lightbulb text-yellow-600 text-xl mb-2"></i>
+                        <h3 class="font-semibold">智能推理</h3>
+                        <p class="text-sm text-gray-600">AI驱动推理</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow">
+                    <div class="text-left">
+                        <i class="fas fa-chart-line text-purple-600 text-xl mb-2"></i>
+                        <h3 class="font-semibold">统计分析</h3>
+                        <p class="text-sm text-gray-600">知识库统计</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold">
+                    <i class="fas fa-database text-indigo-600 mr-2"></i>
+                    知识库
+                </h2>
+                <div class="flex items-center space-x-2">
+                    <span class="text-sm text-gray-600">排序:</span>
+                    <select id="sortBy" class="px-3 py-1 border border-gray-300 rounded-lg text-sm">
+                        <option value="score">相关性</option>
+                        <option value="created_at">创建时间</option>
+                        <option value="updated_at">更新时间</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="knowledgeContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Knowledge cards will be inserted here -->
+            </div>
+            
+            <!-- Loading indicator -->
+            <div id="loadingIndicator" class="hidden text-center py-8">
+                <i class="fas fa-spinner fa-spin text-4xl text-indigo-600"></i>
+                <p class="mt-4 text-gray-600">正在加载...</p>
+            </div>
+            
+            <!-- Empty state -->
+            <div id="emptyState" class="hidden text-center py-12">
+                <i class="fas fa-inbox text-6xl text-gray-400 mb-4"></i>
+                <p class="text-xl text-gray-600">暂无知识条目</p>
+                <p class="text-sm text-gray-500 mt-2">点击"添加知识"开始创建</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Knowledge Modal -->
+    <div id="addKnowledgeModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-2xl w-full p-6">
+                <h3 class="text-lg font-semibold mb-4">添加新知识</h3>
+                <form id="addKnowledgeForm">
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">内容</label>
+                        <textarea 
+                            id="knowledgeContent" 
+                            rows="4" 
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                            required
+                        ></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">类型</label>
+                        <select id="knowledgeType" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                            <option value="fact">事实</option>
+                            <option value="concept">概念</option>
+                            <option value="procedure">流程</option>
+                            <option value="rule">规则</option>
+                            <option value="relationship">关系</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">标签</label>
+                        <input 
+                            type="text" 
+                            id="knowledgeTags" 
+                            placeholder="用逗号分隔多个标签"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                        >
+                    </div>
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" id="cancelAddBtn" class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                            取消
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            <i class="fas fa-plus mr-2"></i>添加
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Knowledge Detail Modal -->
+    <div id="knowledgeDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-3xl w-full p-6 max-h-[80vh] overflow-y-auto">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-lg font-semibold">知识详情</h3>
+                    <button id="closeDetailBtn" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="knowledgeDetail">
+                    <!-- Detail content will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 hidden z-50">
+        <div class="bg-white rounded-lg shadow-lg p-4 flex items-center space-x-3">
+            <i id="toastIcon" class="fas fa-check-circle text-green-600"></i>
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Global variables
+        let socket = null;
+        let currentResults = [];
+        let isDarkMode = false;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSocket();
+            initializeEventListeners();
+            loadInitialData();
+        });
+
+        // Socket.IO initialization
+        function initializeSocket() {
+            socket = io();
+            
+            socket.on('connect', function(data) {
+                console.log('Connected to server');
+                showToast('已连接到服务器', 'success');
+            });
+
+            socket.on('search_results', function(data) {
+                displayResults(data.results);
+                updateSearchStats(data.results.length, 0); // Mock time
+            });
+
+            socket.on('knowledge_added', function(data) {
+                showToast('新知识已添加', 'success');
+                loadInitialData();
+            });
+        }
+
+        // Event listeners
+        function initializeEventListeners() {
+            // Search
+            document.getElementById('searchBtn').addEventListener('click', performSearch);
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') performSearch();
+            });
+
+            // Theme toggle
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+            // Add knowledge
+            document.getElementById('addKnowledgeBtn').addEventListener('click', showAddModal);
+            document.getElementById('cancelAddBtn').addEventListener('click', hideAddModal);
+            document.getElementById('addKnowledgeForm').addEventListener('submit', handleAddKnowledge);
+
+            // Knowledge detail
+            document.getElementById('closeDetailBtn').addEventListener('click', hideDetailModal);
+
+            // Graph view
+            document.getElementById('graphViewBtn').addEventListener('click', function() {
+                window.location.href = '/graph';
+            });
+
+            // Sort
+            document.getElementById('sortBy').addEventListener('change', function() {
+                if (currentResults.length > 0) {
+                    sortResults(this.value);
+                }
+            });
+        }
+
+        // Load initial data
+        async function loadInitialData() {
+            showLoading(true);
+            try {
+                const response = await fetch('/api/knowledge?q=*&top_k=12');
+                const data = await response.json();
+                displayResults(data.results || []);
+            } catch (error) {
+                console.error('Failed to load initial data:', error);
+                showToast('加载数据失败', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Search functionality
+        async function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            const type = document.getElementById('typeFilter').value;
+            
+            if (!query) {
+                showToast('请输入搜索查询', 'warning');
+                return;
+            }
+
+            showLoading(true);
+            const startTime = Date.now();
+
+            try {
+                let url = `/api/knowledge?q=${encodeURIComponent(query)}&top_k=20`;
+                if (type) url += `&type=${type}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                const searchTime = Date.now() - startTime;
+                displayResults(data.results || []);
+                updateSearchStats(data.results.length, searchTime);
+
+                // Also emit via socket for real-time updates
+                if (socket) {
+                    socket.emit('search_query', { query: query });
+                }
+            } catch (error) {
+                console.error('Search failed:', error);
+                showToast('搜索失败', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // Display results
+        function displayResults(results) {
+            currentResults = results;
+            const container = document.getElementById('knowledgeContainer');
+            const emptyState = document.getElementById('emptyState');
+
+            if (results.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            container.innerHTML = results.map(createKnowledgeCard).join('');
+        }
+
+        // Create knowledge card
+        function createKnowledgeCard(knowledge) {
+            const typeColors = {
+                fact: 'bg-blue-100 text-blue-800',
+                concept: 'bg-green-100 text-green-800',
+                procedure: 'bg-yellow-100 text-yellow-800',
+                rule: 'bg-red-100 text-red-800',
+                relationship: 'bg-purple-100 text-purple-800'
+            };
+
+            const typeLabels = {
+                fact: '事实',
+                concept: '概念',
+                procedure: '流程',
+                rule: '规则',
+                relationship: '关系'
+            };
+
+            return `
+                <div class="knowledge-card bg-white rounded-lg shadow-sm p-4 cursor-pointer" onclick="showKnowledgeDetail('${knowledge.id}')">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="px-2 py-1 text-xs font-medium rounded-full ${typeColors[knowledge.type] || 'bg-gray-100 text-gray-800'}">
+                            ${typeLabels[knowledge.type] || knowledge.type}
+                        </span>
+                        <span class="text-xs text-gray-500">
+                            评分: ${(knowledge.score || 0).toFixed(2)}
+                        </span>
+                    </div>
+                    <p class="text-gray-900 mb-3 line-clamp-3">
+                        ${highlightSearchTerms(knowledge.content)}
+                    </p>
+                    <div class="flex justify-between items-center text-xs text-gray-500">
+                        <span>
+                            <i class="fas fa-link mr-1"></i>
+                            ${knowledge.relationships ? knowledge.relationships.length : 0} 关系
+                        </span>
+                        <span>
+                            <i class="fas fa-clock mr-1"></i>
+                            ${formatDate(knowledge.created_at)}
+                        </span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Highlight search terms
+        function highlightSearchTerms(content) {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) return content;
+
+            const terms = query.split(/\s+/).filter(term => term.length > 2);
+            let highlighted = content;
+
+            terms.forEach(term => {
+                const regex = new RegExp(`(${term})`, 'gi');
+                highlighted = highlighted.replace(regex, '<span class="search-highlight">$1</span>');
+            });
+
+            return highlighted;
+        }
+
+        // Show knowledge detail
+        async function showKnowledgeDetail(knowledgeId) {
+            try {
+                // In a real implementation, this would fetch detailed knowledge data
+                showToast('知识详情功能开发中', 'info');
+            } catch (error) {
+                console.error('Failed to load knowledge detail:', error);
+                showToast('加载详情失败', 'error');
+            }
+        }
+
+        // Add knowledge
+        async function handleAddKnowledge(e) {
+            e.preventDefault();
+            
+            const content = document.getElementById('knowledgeContent').value.trim();
+            const type = document.getElementById('knowledgeType').value;
+            const tags = document.getElementById('knowledgeTags').value.split(',').map(t => t.trim()).filter(t => t);
+
+            if (!content) {
+                showToast('内容不能为空', 'warning');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/knowledge', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer mock-token` // In production, use real JWT
+                    },
+                    body: JSON.stringify({
+                        content: content,
+                        type: type,
+                        tags: tags
+                    })
+                });
+
+                if (response.ok) {
+                    showToast('知识添加成功', 'success');
+                    hideAddModal();
+                    document.getElementById('addKnowledgeForm').reset();
+                    loadInitialData();
+                } else {
+                    const error = await response.json();
+                    showToast(error.error || '添加失败', 'error');
+                }
+            } catch (error) {
+                console.error('Failed to add knowledge:', error);
+                showToast('添加失败', 'error');
+            }
+        }
+
+        // Modal functions
+        function showAddModal() {
+            document.getElementById('addKnowledgeModal').classList.remove('hidden');
+        }
+
+        function hideAddModal() {
+            document.getElementById('addKnowledgeModal').classList.add('hidden');
+        }
+
+        function hideDetailModal() {
+            document.getElementById('knowledgeDetailModal').classList.add('hidden');
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark');
+            const icon = document.querySelector('#themeToggle i');
+            icon.className = isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // Sort results
+        function sortResults(sortBy) {
+            switch(sortBy) {
+                case 'score':
+                    currentResults.sort((a, b) => (b.score || 0) - (a.score || 0));
+                    break;
+                case 'created_at':
+                    currentResults.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                    break;
+                case 'updated_at':
+                    currentResults.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+                    break;
+            }
+            displayResults(currentResults);
+        }
+
+        // Update search stats
+        function updateSearchStats(count, time) {
+            const statsDiv = document.getElementById('searchStats');
+            const countSpan = document.getElementById('resultCount');
+            const timeSpan = document.getElementById('searchTime');
+
+            countSpan.textContent = count;
+            timeSpan.textContent = time;
+            statsDiv.classList.remove('hidden');
+        }
+
+        // Loading indicator
+        function showLoading(show) {
+            const loading = document.getElementById('loadingIndicator');
+            if (show) {
+                loading.classList.remove('hidden');
+            } else {
+                loading.classList.add('hidden');
+            }
+        }
+
+        // Toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            const msg = document.getElementById('toastMessage');
+
+            // Set icon and color based on type
+            const iconClasses = {
+                success: 'fa-check-circle text-green-600',
+                error: 'fa-exclamation-circle text-red-600',
+                warning: 'fa-exclamation-triangle text-yellow-600',
+                info: 'fa-info-circle text-blue-600'
+            };
+
+            icon.className = `fas ${iconClasses[type] || iconClasses.info}`;
+            msg.textContent = message;
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diff = now - date;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            if (days === 0) return '今天';
+            if (days === 1) return '昨天';
+            if (days < 7) return `${days}天前`;
+            return date.toLocaleDateString('zh-CN');
+        }
+    </script>
+</body>
+</html>

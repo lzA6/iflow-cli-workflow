@@ -57,7 +57,7 @@ class AsyncScriptHealthChecker:
             module = importlib.util.module_from_spec(spec)
             
             # 对于异步模块，使用线程池执行
-            if module_name in ['agent_collaboration_protocol_v9', 'agent_lifecycle_manager_v9', 'agent_registry_v9']:
+            if module_name in ['multi_agent_collaboration_system_v12']:
                 # 这些模块会在导入时启动异步任务，需要特殊处理
                 return True, "异步模块导入成功（后台任务已启动）"
             

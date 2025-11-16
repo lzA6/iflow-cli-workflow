@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+ARP Prompt Optimizer Command Entry
+=================================
+
+简化版命令行入口，直接调用优化器功能
+
+作者: iFlow架构团队
+版本: 1.0.0
+日期: 2025-11-17
+"""
+
+import sys
+import os
+import argparse
+import asyncio
+from pathlib import Path
+
+# 添加项目路径
+current_dir = Path(__file__).parent
+project_root = current_dir.parent.parent
+sys.path.insert(0, str(project_root))
+
+# 添加.iflow路径
+iflow_path = project_root / ".iflow"
+sys.path.insert(0, str(iflow_path))
+
+try:
+    from core.intelligent_prompt_optimizer import (
+        OptimizationMode,
+        optimize_user_prompt,
+        get_prompt_optimizer
+    )
+except ImportError as e:
+    print(f"❌ 导入错误：{e}")
+    print("请确保在项目根目录运行此脚本")
+    sys.exit(1)
+
+def print_banner():
+    """打印横幅"""
+    print("""
+[ARP] ARP智能提示词优化器 V1.0
+===============================
+[INFO] 智能优化您的提示词，让AI更懂您的需求
+[INFO] 5种优化模式，个性化适配
+[INFO] 本地数据存储，隐私安全
+[INFO] 越用越懂您，持续学习
+    """)
+
+async def optimize_single_prompt(prompt: str, mode: str = "standard", user_id: str = "default_user"):
+    """优化单个提示词"""
+    print(f"[INFO] 正在优化提示词（模式：{mode}）...")
+    
+    try:
+        optimization_mode = OptimizationMode(mode)
+        result = await optimize_user_prompt(user_id, prompt, optimization_mode)
+        
+        if result.success:
+            print("\n" + "="*60)
+            print("[RESULT] 优化结果")
+            print("="*60)
+            print(f"[SUCCESS] 优化模式：{result.optimization_mode.value}")
+            print(f"[INFO] 置信度：{result.confidence:.2f}")
+            print(f"[INFO] 优化说明：{result.reasoning}")
+            
+            print("\n[OUTPUT] 优化后的提示词：")
+            print("-" * 40)
+            print(result.optimized_prompt)
+            print("-" * 40)
+            
+            if result.suggestions:
+                print("\n[SUGGESTIONS] 建议：")
+                for i, suggestion in enumerate(result.suggestions, 1):
+                    print(f"  {i}. {suggestion}")
+            
+            print("\n[SUCCESS] 优化完成！您可以直接使用这个提示词。")
+            
+        else:
+            print(f"[ERROR] 优化失败：{result.reasoning}")
+            
+    except Exception as e:
+        print(f"[ERROR] 优化过程中出现错误：{e}")
+
+def show_user_stats(user_id: str = "default_user"):
+    """显示用户统计"""
+    try:
+        optimizer = get_prompt_optimizer()
+        stats = optimizer.get_user_statistics(user_id)
+        
+        print(f"\n[STATS] 用户统计 - {user_id}")
+        print("=" * 50)
+        print(f"[INFO] 总交互次数：{stats['total_interactions']}")
+        print(f"[INFO] 接受率：{stats['acceptance_rate']:.1f}%")
+        print(f"[INFO] 平均满意度：{stats['average_satisfaction']:.1f}/5.0")
+        print(f"[INFO] 专业水平：{stats['expertise_level']}")
+        
+        if stats['preferred_modes']:
+            print(f"\n[INFO] 偏好模式：")
+            for mode, count in stats['preferred_modes']:
+                print(f"    • {mode}: {count}次")
+        
+        if stats['satisfaction_trend']:
+            print(f"\n[INFO] 最近满意度趋势：{stats['satisfaction_trend']}")
+        
+        print(f"\n[INFO] 数据存储位置：{optimizer.data_dir}")
+        
+    except Exception as e:
+        print(f"[ERROR] 获取统计信息失败：{e}")
+
+def export_user_data(user_id: str = "default_user"):
+    """导出用户数据"""
+    try:
+        optimizer = get_prompt_optimizer()
+        export_path = optimizer.export_user_data(user_id)
+        print(f"[INFO] 用户数据已导出到：{export_path}")
+        
+    except Exception as e:
+        print(f"[ERROR] 导出用户数据失败：{e}")
+
+async def start_interactive(user_id: str = "default_user"):
+    """启动交互式会话"""
+    print_banner()
+    print("[INFO] 进入交互式模式，输入 'quit' 或 '退出' 结束会话")
+    print("[INFO] 请输入您想要优化的提示词：")
+    
+    while True:
+        try:
+            user_input = input("\n> ").strip()
+            
+            if not user_input:
+                continue
+            
+            if user_input.lower() in ['quit', 'exit', '退出', 'q']:
+                print("\n[INFO] 感谢使用ARP智能提示词优化器！")
+                break
+            
+            await optimize_single_prompt(user_input, "standard", user_id)
+            
+        except KeyboardInterrupt:
+            print("\n\n[INFO] 感谢使用ARP智能提示词优化器！")
+            break
+        except Exception as e:
+            print(f"[ERROR] 处理输入时出现错误：{e}")
+
+def main():
+    """主入口函数"""
+    parser = argparse.ArgumentParser(
+        description="ARP智能提示词优化器 V1.0",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+使用示例：
+  /arp-prompt "帮我写一个Python函数"
+  /arp-prompt --mode professional "解释机器学习算法"
+  /arp-prompt --mode beginner "什么是区块链"
+  /arp-prompt --interactive
+  /arp-prompt --stats
+  /arp-prompt --export --user-id my_user
+
+优化模式：
+  standard      - 标准优化（默认）
+  professional  - 专业方向，添加术语和技术细节
+  beginner      - 小白友好，通俗易懂
+  ai_format     - AI友好格式，结构化提示词
+  reoptimize    - 重新优化，基于反馈改进
+        """
+    )
+    
+    parser.add_argument("prompt", nargs="*", help="要优化的提示词")
+    parser.add_argument("--mode", 
+                       choices=["standard", "professional", "beginner", "ai_format", "reoptimize"],
+                       default="standard", 
+                       help="优化模式（默认：standard）")
+    parser.add_argument("--user-id", default="default_user", help="用户ID（默认：default_user）")
+    parser.add_argument("--interactive", "-i", action="store_true", help="启动交互式会话")
+    parser.add_argument("--stats", "-s", action="store_true", help="显示用户统计信息")
+    parser.add_argument("--export", "-e", action="store_true", help="导出用户数据")
+    parser.add_argument("--version", "-v", action="version", version="ARP智能提示词优化器 V1.0")
+    
+    args = parser.parse_args()
+    
+    # 处理特殊命令
+    if args.stats:
+        show_user_stats(args.user_id)
+        return
+    
+    if args.export:
+        export_user_data(args.user_id)
+        return
+    
+    if args.interactive:
+        asyncio.run(start_interactive(args.user_id))
+        return
+    
+    # 处理提示词优化
+    if args.prompt:
+        prompt = " ".join(args.prompt)
+        asyncio.run(optimize_single_prompt(prompt, args.mode, args.user_id))
+    else:
+        # 没有提示词，显示帮助
+        print_banner()
+        print("[INFO] 请提供要优化的提示词，或使用 --interactive 启动交互式模式")
+        print("\n[INFO] 使用示例：")
+        print("  /arp-prompt \"帮我写代码\"")
+        print("  /arp-prompt --mode professional \"机器学习算法\"")
+        print("  /arp-prompt --interactive")
+        print("  /arp-prompt --stats")
+
+if __name__ == "__main__":
+    main()

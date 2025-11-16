@@ -1,0 +1,335 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+ARP Prompt Optimizer - Interactive Enhanced Version
+================================================
+
+增强版交互式提示词优化器，支持多模式选择、复制功能和持续优化
+
+作者: iFlow架构团队
+版本: 2.0.0
+日期: 2025-11-17
+"""
+
+import sys
+import os
+import argparse
+import asyncio
+import json
+import pyperclip
+from pathlib import Path
+from datetime import datetime
+from typing import Dict, List, Optional, Tuple
+
+# 添加项目路径
+current_dir = Path(__file__).parent
+project_root = current_dir.parent.parent
+sys.path.insert(0, str(project_root))
+
+# 添加.iflow路径
+iflow_path = project_root / ".iflow"
+sys.path.insert(0, str(iflow_path))
+
+try:
+    from core.intelligent_prompt_optimizer import (
+        OptimizationMode,
+        optimize_user_prompt,
+        get_prompt_optimizer
+    )
+except ImportError as e:
+    print(f"[ERROR] 导入错误：{e}")
+    print("请确保在项目根目录运行此脚本")
+    sys.exit(1)
+
+class ARPInteractiveOptimizer:
+    """增强版交互式提示词优化器"""
+    
+    def __init__(self, user_id: str = "default_user"):
+        self.user_id = user_id
+        self.optimizer = get_prompt_optimizer()
+        self.optimization_history = []
+        self.user_preferences = self._load_user_preferences()
+        
+    def _load_user_preferences(self) -> Dict:
+        """加载用户偏好设置"""
+        try:
+            prefs_file = self.optimizer.data_dir / f"{self.user_id}_preferences.json"
+            if prefs_file.exists():
+                with open(prefs_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+        except Exception:
+            pass
+        return {
+            "preferred_modes": {},
+            "accepted_suggestions": 0,
+            "rejected_suggestions": 0,
+            "total_optimizations": 0,
+            "favorite_patterns": []
+        }
+    
+    def _save_user_preferences(self):
+        """保存用户偏好设置"""
+        try:
+            prefs_file = self.optimizer.data_dir / f"{self.user_id}_preferences.json"
+            with open(prefs_file, 'w', encoding='utf-8') as f:
+                json.dump(self.user_preferences, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"[WARNING] 保存用户偏好失败：{e}")
+    
+    def _update_preferences(self, mode: str, accepted: bool, pattern: str = ""):
+        """更新用户偏好"""
+        self.user_preferences["total_optimizations"] += 1
+        
+        if accepted:
+            self.user_preferences["accepted_suggestions"] += 1
+            if mode not in self.user_preferences["preferred_modes"]:
+                self.user_preferences["preferred_modes"][mode] = 0
+            self.user_preferences["preferred_modes"][mode] += 1
+            
+            if pattern and pattern not in self.user_preferences["favorite_patterns"]:
+                self.user_preferences["favorite_patterns"].append(pattern)
+        else:
+            self.user_preferences["rejected_suggestions"] += 1
+        
+        self._save_user_preferences()
+    
+    def _get_recommended_mode(self) -> str:
+        """基于用户偏好推荐优化模式"""
+        if not self.user_preferences["preferred_modes"]:
+            return "standard"
+        
+        # 返回使用次数最多的模式
+        return max(self.user_preferences["preferred_modes"].items(), key=lambda x: x[1])[0]
+    
+    async def optimize_with_all_modes(self, prompt: str) -> List[Tuple[str, str, float]]:
+        """使用所有模式优化提示词"""
+        modes = ["standard", "professional", "beginner", "ai_format"]
+        results = []
+        
+        print("[INFO] 正在生成多种优化方案...")
+        
+        for mode in modes:
+            try:
+                optimization_mode = OptimizationMode(mode)
+                result = await optimize_user_prompt(self.user_id, prompt, optimization_mode)
+                
+                if result.success:
+                    results.append((mode, result.optimized_prompt, result.confidence))
+                else:
+                    print(f"[WARNING] {mode} 模式优化失败：{result.reasoning}")
+                    
+            except Exception as e:
+                print(f"[ERROR] {mode} 模式优化出错：{e}")
+        
+        return results
+    
+    def display_optimization_options(self, results: List[Tuple[str, str, float]], original_prompt: str):
+        """显示优化选项"""
+        print("\n" + "="*80)
+        print("[ARP] 多模式优化结果")
+        print("="*80)
+        
+        print(f"\n[ORIGINAL] 原始提示词：")
+        print(f"  {original_prompt}")
+        
+        print(f"\n[OPTIONS] 请选择优化版本（输入数字复制到剪贴板，0重新优化，9退出）：")
+        print("-" * 80)
+        
+        for i, (mode, optimized_prompt, confidence) in enumerate(results, 1):
+            print(f"\n{i}. [{mode.upper()}] 置信度：{confidence:.2f}")
+            print(f"   {optimized_prompt}")
+        
+        print(f"\n0. [REOPTIMIZE] 重新生成优化方案")
+        print("9. [QUIT] 退出")
+        print("-" * 80)
+    
+    async def interactive_optimization_session(self, prompt: str):
+        """交互式优化会话"""
+        while True:
+            # 获取推荐模式
+            recommended_mode = self._get_recommended_mode()
+            print(f"[INFO] 基于您的偏好，推荐使用 {recommended_mode} 模式")
+            
+            # 生成所有模式的优化结果
+            results = await self.optimize_with_all_modes(prompt)
+            
+            if not results:
+                print("[ERROR] 所有优化模式都失败了，请检查提示词或稍后重试")
+                return
+            
+            # 显示选项
+            self.display_optimization_options(results, prompt)
+            
+            # 获取用户选择
+            try:
+                choice = input("\n> 请选择：").strip()
+                
+                if choice.lower() == 'q' or choice == '9':
+                    print("[INFO] 退出优化会话")
+                    break
+                
+                if choice == '0':
+                    print("[INFO] 重新生成优化方案...")
+                    # 记录不满意，用于改进后续推荐
+                    self._update_preferences("reoptimize", False)
+                    continue
+                
+                try:
+                    choice_num = int(choice)
+                    if 1 <= choice_num <= len(results):
+                        selected_mode, selected_prompt, confidence = results[choice_num - 1]
+                        
+                        # 复制到剪贴板
+                        try:
+                            pyperclip.copy(selected_prompt)
+                            print(f"[SUCCESS] 已复制 {selected_mode} 模式的优化结果到剪贴板")
+                            
+                            # 更新用户偏好
+                            self._update_preferences(selected_mode, True, selected_prompt[:50])
+                            
+                            # 询问是否继续
+                            continue_choice = input("\n是否继续优化其他提示词？(y/n): ").strip().lower()
+                            if continue_choice != 'y':
+                                break
+                            
+                            # 获取新的提示词
+                            new_prompt = input("\n请输入新的提示词：").strip()
+                            if new_prompt:
+                                prompt = new_prompt
+                                continue
+                            else:
+                                break
+                        except Exception as e:
+                            print(f"[ERROR] 复制到剪贴板失败：{e}")
+                            print(f"[INFO] 优化结果：{selected_prompt}")
+                    else:
+                        print(f"[ERROR] 请输入 1-{len(results)} 之间的数字，或 0 重新优化，9 退出")
+                        
+                except ValueError:
+                    print("[ERROR] 请输入有效的数字")
+                    
+            except KeyboardInterrupt:
+                print("\n[INFO] 用户中断，退出优化会话")
+                break
+    
+    async def start_enhanced_interactive(self):
+        """启动增强交互模式"""
+        print("""
+[ARP] ARP智能提示词优化器 V2.0 - 增强版
+========================================
+[INFO] 智能优化您的提示词，让AI更懂您的需求
+[INFO] 支持多模式对比选择，一键复制到剪贴板
+[INFO] 基于使用偏好智能推荐优化模式
+[INFO] 持续学习您的偏好，越用越智能
+        """)
+        
+        print("[INFO] 进入增强交互模式，输入 'quit' 或 '退出' 结束会话")
+        
+        while True:
+            try:
+                user_input = input("\n> 请输入您想要优化的提示词：").strip()
+                
+                if not user_input:
+                    continue
+                
+                if user_input.lower() in ['quit', 'exit', '退出', 'q']:
+                    print("\n[INFO] 感谢使用ARP智能提示词优化器！")
+                    break
+                
+                # 开始交互式优化会话
+                await self.interactive_optimization_session(user_input)
+                
+            except KeyboardInterrupt:
+                print("\n\n[INFO] 感谢使用ARP智能提示词优化器！")
+                break
+            except Exception as e:
+                print(f"[ERROR] 处理输入时出现错误：{e}")
+    
+    def show_enhanced_stats(self):
+        """显示增强统计信息"""
+        try:
+            basic_stats = self.optimizer.get_user_statistics(self.user_id)
+            prefs = self.user_preferences
+            
+            print(f"\n[STATS] 用户统计 - {self.user_id}")
+            print("=" * 60)
+            
+            print(f"[BASIC] 基础统计：")
+            print(f"  总交互次数：{basic_stats['total_interactions']}")
+            print(f"  接受率：{basic_stats['acceptance_rate']:.1f}%")
+            print(f"  平均满意度：{basic_stats['average_satisfaction']:.1f}/5.0")
+            print(f"  专业水平：{basic_stats['expertise_level']}")
+            
+            print(f"\n[PREFERENCES] 用户偏好：")
+            print(f"  总优化次数：{prefs['total_optimizations']}")
+            print(f"  接受建议：{prefs['accepted_suggestions']}")
+            print(f"  拒绝建议：{prefs['rejected_suggestions']}")
+            
+            if prefs['preferred_modes']:
+                print(f"\n  偏好模式排行：")
+                sorted_modes = sorted(prefs['preferred_modes'].items(), key=lambda x: x[1], reverse=True)
+                for i, (mode, count) in enumerate(sorted_modes, 1):
+                    percentage = (count / prefs['total_optimizations']) * 100
+                    print(f"    {i}. {mode}: {count}次 ({percentage:.1f}%)")
+            
+            if prefs['favorite_patterns']:
+                print(f"\n  喜欢的提示词模式：")
+                for i, pattern in enumerate(prefs['favorite_patterns'][:5], 1):
+                    print(f"    {i}. {pattern}")
+            
+            recommended_mode = self._get_recommended_mode()
+            print(f"\n[RECOMMENDATION] 推荐优化模式：{recommended_mode}")
+            
+        except Exception as e:
+            print(f"[ERROR] 获取统计信息失败：{e}")
+
+async def main():
+    """主入口函数"""
+    parser = argparse.ArgumentParser(
+        description="ARP智能提示词优化器 V2.0 - 增强版",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+使用示例：
+  arp-prompt-interactive "帮我写一个Python函数"
+  arp-prompt-interactive --stats
+  arp-prompt-interactive --user-id my_user
+
+新功能：
+  - 多模式对比选择
+  - 一键复制到剪贴板
+  - 智能模式推荐
+  - 用户偏好学习
+  - 持续优化改进
+        """
+    )
+    
+    parser.add_argument("prompt", nargs="*", help="要优化的提示词")
+    parser.add_argument("--user-id", default="default_user", help="用户ID（默认：default_user）")
+    parser.add_argument("--stats", "-s", action="store_true", help="显示增强统计信息")
+    parser.add_argument("--version", "-v", action="version", version="ARP智能提示词优化器 V2.0")
+    
+    args = parser.parse_args()
+    
+    # 创建增强版优化器
+    optimizer = ARPInteractiveOptimizer(args.user_id)
+    
+    # 处理特殊命令
+    if args.stats:
+        optimizer.show_enhanced_stats()
+        return
+    
+    # 处理提示词优化
+    if args.prompt:
+        prompt = " ".join(args.prompt)
+        await optimizer.interactive_optimization_session(prompt)
+    else:
+        # 启动增强交互模式
+        await optimizer.start_enhanced_interactive()
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\n[INFO] 程序被用户中断")
+    except Exception as e:
+        print(f"[ERROR] 程序执行出错：{e}")

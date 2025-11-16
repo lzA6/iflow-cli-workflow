@@ -1,0 +1,82 @@
+{
+  "id": "d0e50e98-c1f7-4959-8765-646d064bac09",
+  "name": "iFlow CLI",
+  "description": "iFlow CLI - 智能工作流和知识库管理系统，版本15.0.0。这是一个基于Python的AI驱动工具，提供工作流自动化、知识库管理、多智能体协作等功能。项目包含152个Python文件，测试覆盖率45.2%。",
+  "status": "planning",
+  "techStack": {
+    "frontend": [],
+    "backend": [
+      "Python",
+      "FastAPI",
+      "UVicorn"
+    ],
+    "database": [],
+    "infrastructure": [
+      "Docker",
+      "Git"
+    ],
+    "tools": [
+      "Pytest",
+      "Black",
+      "MyPy",
+      "Bandit",
+      "Pre-commit"
+    ]
+  },
+  "architecture": {
+    "observability": []
+  },
+  "currentPhase": "开发中",
+  "nextSteps": [],
+  "tasks": [],
+  "decisions": [
+    {
+      "id": "47de20ea-ad34-4b90-9ca4-816433aa4432",
+      "decision": "已建立项目上下文管理系统",
+      "reasoning": "通过Serena MCP集成了项目管理功能，创建了项目实体并初始化了状态跟踪",
+      "timestamp": "2025-11-16T19:25:02.249Z",
+      "impact": "为开发工作流提供了基础框架和支持跨会话的持久化上下文管理"
+    }
+  ],
+  "notes": [
+    {
+      "id": "ebf7c2b0-df3f-4fb5-96c6-714caa5581dc",
+      "content": "项目初始化完成 - 上下文加载成功。iFlow CLI是一个智能工作流和知识库管理系统，当前版本15.0.0，包含152个Python文件，测试覆盖率45.2%。主要技术栈包括Python、FastAPI、UVicorn等。",
+      "timestamp": "2025-11-16T19:24:53.629Z",
+      "category": "项目状态"
+    },
+    {
+      "id": "6676605a-6217-4ec1-bc56-9c015a1f9f6c",
+      "content": "【关键决策记录】测试覆盖率分析结果：\n- 当前覆盖率：45.2%，低于理想水平\n- 核心模块覆盖率：8.23%，需要大幅提升\n- 测试文件数量：317个测试相关匹配，测试框架完善\n- 决策：优先提升核心模块测试覆盖率至80%+",
+      "timestamp": "2025-11-16T19:26:50.826Z",
+      "category": "测试质量决策"
+    },
+    {
+      "id": "7f1b1b5c-2dfa-41af-a121-31007852012a",
+      "content": "【关键决策记录】AI/ML依赖分析：\n- 发现55个torch/sklearn/numpy/faiss导入\n- 其中29个文件导入torch但很多只是基础计算\n- 决策：优化AI依赖使用，避免过度工程化\n- 建议：简单计算使用原生Python，复杂AI功能保留torch",
+      "timestamp": "2025-11-16T19:26:54.391Z",
+      "category": "技术架构决策"
+    },
+    {
+      "id": "2f3ac038-4b5b-4849-b850-7071a920e31c",
+      "content": "【关键决策记录】代码质量分析：\n- 发现64个TODO/FIXME/BUG标记\n- 主要分布在测试系统和文档中\n- 决策：建立技术债务清理计划，优先处理核心模块标记\n- 目标：30天内清理所有关键路径的TODO标记",
+      "timestamp": "2025-11-16T19:26:57.585Z",
+      "category": "代码质量决策"
+    },
+    {
+      "id": "d4f4321b-6119-40f5-b5aa-d2c03bd8cb4c",
+      "content": "【AI清理系统发现】存储优化机会：\n- archives目录：13个backup文件夹，建议保留最新3个\n- __pycache__文件：119个缓存文件可安全删除\n- 重复backup文档：14个文件名包含多次backup重复\n- 测试报告：38个历史报告，建议保留最近7天",
+      "timestamp": "2025-11-16T19:32:28.589Z",
+      "category": "存储优化分析"
+    },
+    {
+      "id": "a6368b75-e06f-426c-a68e-5b9321dcadc6",
+      "content": "【依赖优化分析】发现过度使用AI库的案例：\n- test_config_optimized.py：导入torch但仅用于设置线程数\n- 建议使用原生Python threading模块替代\n- psutil导入合理，用于内存监控\n- 可优化点：简单配置避免重量级库导入",
+      "timestamp": "2025-11-16T19:32:54.187Z",
+      "category": "依赖优化建议"
+    }
+  ],
+  "createdAt": "2025-11-16T19:24:50.827Z",
+  "updatedAt": "2025-11-16T19:32:54.187Z",
+  "lastAccessedAt": "2025-11-16T19:32:54.186Z"
+}

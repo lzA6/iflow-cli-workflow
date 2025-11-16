@@ -1,0 +1,104 @@
+[
+  {
+    "user_id": "test_user",
+    "original_prompt": "帮我写代码",
+    "optimized_prompt": "帮我写代码 请从技术角度进行详细分析。 请提供具体的实现步骤和注意事项。 请直接给出核心答案。",
+    "mode": "standard",
+    "analysis_result": {
+      "original_prompt": "帮我写代码",
+      "word_count": 1,
+      "sentence_count": 1,
+      "key_concepts": [
+        "帮我写代码"
+      ],
+      "semantic_complexity": 0.2,
+      "clarity_score": 0.8999999999999999,
+      "completeness_score": 0.0,
+      "context_indicators": [
+        "技术"
+      ],
+      "user_intent": "创建",
+      "domain_specificity": 0.0,
+      "word_associations": {
+        "帮我写代码": []
+      }
+    },
+    "improvements_applied": [
+      "完整性提升",
+      "个性化适配",
+      "语义增强"
+    ],
+    "confidence": 0.8899999999999999,
+    "user_feedback": null,
+    "user_accepted": false,
+    "timestamp": "2025-11-17T05:58:34.813396",
+    "user_expertise_level": "intermediate",
+    "interaction_type": "initial_optimization"
+  },
+  {
+    "user_id": "test_user",
+    "original_prompt": "分析数据",
+    "optimized_prompt": "分析数据 请包含分析方法和评估标准。",
+    "mode": "professional",
+    "analysis_result": {
+      "original_prompt": "分析数据",
+      "word_count": 1,
+      "sentence_count": 1,
+      "key_concepts": [
+        "分析数据"
+      ],
+      "semantic_complexity": 0.5800000000000001,
+      "clarity_score": 0.7999999999999999,
+      "completeness_score": 0.0,
+      "context_indicators": [],
+      "user_intent": "分析",
+      "domain_specificity": 0.0,
+      "word_associations": {
+        "分析数据": []
+      }
+    },
+    "improvements_applied": [
+      "完整性提升",
+      "语义增强",
+      "专业化增强"
+    ],
+    "confidence": 0.8799999999999999,
+    "user_feedback": null,
+    "user_accepted": false,
+    "timestamp": "2025-11-17T05:58:34.817396",
+    "user_expertise_level": "intermediate",
+    "interaction_type": "mode_switch"
+  },
+  {
+    "user_id": "test_user",
+    "original_prompt": "分析数据",
+    "optimized_prompt": "分析数据 关于'分析数据'，请用简单的语言解释。 请用生活中的例子来说明，让初学者容易理解。",
+    "mode": "beginner",
+    "analysis_result": {
+      "original_prompt": "分析数据",
+      "word_count": 1,
+      "sentence_count": 1,
+      "key_concepts": [
+        "分析数据"
+      ],
+      "semantic_complexity": 0.5800000000000001,
+      "clarity_score": 0.7999999999999999,
+      "completeness_score": 0.0,
+      "context_indicators": [],
+      "user_intent": "分析",
+      "domain_specificity": 0.0,
+      "word_associations": {
+        "分析数据": []
+      }
+    },
+    "improvements_applied": [
+      "简化表达"
+    ],
+    "confidence": 0.8799999999999999,
+    "user_feedback": null,
+    "user_accepted": false,
+    "timestamp": "2025-11-17T05:58:34.820396",
+    "user_expertise_level": "intermediate",
+    "interaction_type": "mode_switch"
+  }
+]

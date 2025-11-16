@@ -1,0 +1,24 @@
+[
+  {
+    "group_id": "group_1763303631840",
+    "name": "系统文档",
+    "description": "iFlow CLI系统相关文档",
+    "path": "C:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\A项目\\docs",
+    "created_at": "2025-11-16T22:33:51.841352",
+    "updated_at": "2025-11-16T22:33:51.845631",
+    "document_count": 4,
+    "total_size": 860,
+    "tags": []
+  },
+  {
+    "group_id": "group_1763303631842",
+    "name": "技术文档",
+    "description": "技术规范和架构文档",
+    "path": "C:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\A项目\\docs",
+    "created_at": "2025-11-16T22:33:51.842015",
+    "updated_at": "2025-11-16T22:33:51.852469",
+    "document_count": 4,
+    "total_size": 860,
+    "tags": []
+  }
+]

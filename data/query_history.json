@@ -1,0 +1,54 @@
+[
+  {
+    "id": "q_1763244710_0",
+    "question": "ARQ推理引擎是什么？",
+    "context": "",
+    "timestamp": "2025-11-16T06:11:50.890551",
+    "response": {
+      "answer": "ARQ推理引擎是iFlow的核心组件，负责深度分析和推理决策。",
+      "source": "ARQ推理引擎",
+      "confidence": 0.8,
+      "details": "来源: ARQ推理引擎, 分类: core"
+    },
+    "response_time": 0.0
+  },
+  {
+    "id": "q_1763244710_1",
+    "question": "REFRAG系统如何工作？",
+    "context": "",
+    "timestamp": "2025-11-16T06:11:50.890551",
+    "response": {
+      "answer": "REFRAG通过压缩-筛选-展开实现RAG性能优化，提升30倍效率。",
+      "source": "REFRAG系统",
+      "confidence": 0.8,
+      "details": "来源: REFRAG系统, 分类: technology"
+    },
+    "response_time": 0.0
+  },
+  {
+    "id": "q_1763244710_2",
+    "question": "系统性能如何优化？",
+    "context": "",
+    "timestamp": "2025-11-16T06:11:50.891539",
+    "response": {
+      "answer": "REFRAG通过压缩-筛选-展开实现RAG性能优化，提升30倍效率。",
+      "source": "REFRAG系统",
+      "confidence": 0.8,
+      "details": "来源: REFRAG系统, 分类: technology"
+    },
+    "response_time": 0.0
+  },
+  {
+    "id": "q_1763244710_3",
+    "question": "iFlow CLI有哪些功能？",
+    "context": "",
+    "timestamp": "2025-11-16T06:11:50.891539",
+    "response": {
+      "answer": "ARQ推理引擎是iFlow的核心组件，负责深度分析和推理决策。",
+      "source": "ARQ推理引擎",
+      "confidence": 0.8,
+      "details": "来源: ARQ推理引擎, 分类: core"
+    },
+    "response_time": 0.0
+  }
+]

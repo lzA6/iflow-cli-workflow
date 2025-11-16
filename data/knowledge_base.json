@@ -1,0 +1,26 @@
+{
+  "kb_1763244710_0": {
+    "id": "kb_1763244710_0",
+    "title": "ARQ推理引擎",
+    "content": "ARQ推理引擎是iFlow的核心组件，负责深度分析和推理决策。",
+    "category": "core",
+    "tags": [
+      "ARQ",
+      "推理",
+      "引擎"
+    ],
+    "created_at": "2025-11-16T06:11:50.888952"
+  },
+  "kb_1763244710_1": {
+    "id": "kb_1763244710_1",
+    "title": "REFRAG系统",
+    "content": "REFRAG通过压缩-筛选-展开实现RAG性能优化，提升30倍效率。",
+    "category": "technology",
+    "tags": [
+      "REFRAG",
+      "RAG",
+      "优化"
+    ],
+    "created_at": "2025-11-16T06:11:50.889949"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "version": "15.0.0",
+  "knowledge_base": {
+    "enabled": true,
+    "storage_path": "./data/knowledge_base",
+    "max_size": "1GB",
+    "auto_cleanup": true,
+    "retention_days": 30
+  },
+  "web_ui": {
+    "enabled": true,
+    "host": "localhost",
+    "port": 8080,
+    "debug": false
+  },
+  "session_management": {
+    "default_retention_days": 7,
+    "max_sessions_per_user": 100,
+    "auto_cleanup_interval": 24,
+    "storage_path": "./data/sessions"
+  },
+  "performance": {
+    "cache_size": "512MB",
+    "max_concurrent_requests": 50,
+    "request_timeout": 30
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "./logs/knowledge_base.log",
+    "max_size": "100MB",
+    "backup_count": 5
+  }
+}

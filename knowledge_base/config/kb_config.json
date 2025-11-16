@@ -1,0 +1,9 @@
+{
+  "max_search_results": 50,
+  "similarity_threshold": 0.7,
+  "cache_ttl": 3600,
+  "max_memory_mb": 512,
+  "auto_cleanup": true,
+  "cleanup_interval": 3600,
+  "enable_usage_tracking": true
+}

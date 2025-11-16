@@ -1,0 +1,50 @@
+[
+  {
+    "question": "什么是ARQ推理引擎？",
+    "context": "",
+    "timestamp": "2025-11-16T06:09:40.425070",
+    "results_count": 0,
+    "response_time": 0.0,
+    "confidence": 0.1
+  },
+  {
+    "question": "REFRAG系统如何工作？",
+    "context": "",
+    "timestamp": "2025-11-16T06:09:40.426054",
+    "results_count": 0,
+    "response_time": 0.0,
+    "confidence": 0.1
+  },
+  {
+    "question": "iFlow CLI有哪些功能？",
+    "context": "",
+    "timestamp": "2025-11-16T06:09:40.426054",
+    "results_count": 2,
+    "response_time": 0.0010263919830322266,
+    "confidence": 0.7
+  },
+  {
+    "question": "如何使用量子意识系统？",
+    "context": "",
+    "timestamp": "2025-11-16T06:09:40.427080",
+    "results_count": 0,
+    "response_time": 0.0,
+    "confidence": 0.1
+  },
+  {
+    "question": "系统的性能如何？",
+    "context": "",
+    "timestamp": "2025-11-16T06:09:40.427080",
+    "results_count": 0,
+    "response_time": 0.0009729862213134766,
+    "confidence": 0.1
+  },
+  {
+    "question": "实时添加的知识",
+    "context": "",
+    "timestamp": "2025-11-16T06:09:40.428679",
+    "results_count": 1,
+    "response_time": 0.0009598731994628906,
+    "confidence": 0.6
+  }
+]

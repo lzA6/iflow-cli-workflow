@@ -1,11 +1,22 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ARQ推理引擎分析命令入口点
+ARQ分析命令入口点 V16
+==================
+
+这是 /arq-analysis 命令的统一入口点
+
+你一定要超级思考、极限思考、深度思考，全力思考、超强思考，认真仔细思考（ultrathink、think really super hard、think intensely）
+
+作者: AI架构师团队
+版本: 16.0.0
+日期: 2025-11-16
 """
 
 import sys
 import os
+import argparse
+import importlib
 from pathlib import Path
 
 # 添加项目路径
@@ -13,18 +24,44 @@ current_dir = Path(__file__).parent
 project_root = current_dir.parent.parent
 sys.path.insert(0, str(project_root))
 
-# 导入并运行分析工作流
-try:
-    from commands.arq_analysis_workflow import main
+def main():
+    """主入口函数"""
+    parser = argparse.ArgumentParser(description="ARQ分析系统 V16")
+    parser.add_argument("--mode", choices=["lite", "full"], default="lite", help="分析模式")
+    parser.add_argument("--thinking-mode", 
+                       choices=["quantum_evolution", "predictive_causal", "anti_fragile", 
+                               "collective_intelligence", "innovative_creativity"],
+                       default="quantum_evolution", help="思考模式（仅完整版）")
+    parser.add_argument("query", nargs="*", help="分析查询")
     
-    if __name__ == "__main__":
-        exit_code = main()
-        sys.exit(exit_code)
+    args = parser.parse_args()
+    query = " ".join(args.query) if args.query else "系统分析"
+    
+    # 根据模式选择工作流
+    if args.mode == "lite":
+        # 使用轻量版
+        sys.path.insert(0, str(current_dir))
+        # 动态导入模块
+        lite_module = importlib.import_module("arq-analysis-lite-v16")
+        ARQLiteAnalyzer = lite_module.ARQLiteAnalyzer
+        analyzer = ARQLiteAnalyzer()
+        result = analyzer.analyze(query)
+        analyzer.display_results(result)
+    else:
+        # 使用完整版
+        sys.path.insert(0, str(current_dir))
+        # 动态导入模块
+        full_module = importlib.import_module("arq-analysis-workflow-v16")
+        ARQAnalysisWorkflowV16 = full_module.ARQAnalysisWorkflowV16
+        import asyncio
         
-except ImportError as e:
-    print(f"❌ 导入失败: {e}")
-    print("请确保在项目根目录运行此命令")
-    sys.exit(1)
-except Exception as e:
-    print(f"❌ 执行失败: {e}")
-    sys.exit(1)
+        async def run_full_analysis():
+            workflow = ARQAnalysisWorkflowV16()
+            await workflow.initialize()
+            result = await workflow.analyze(query, args.thinking_mode)
+            print(f"\n✅ 完整版分析完成，耗时: {result['execution_time']:.2f}秒")
+        
+        asyncio.run(run_full_analysis())
+
+if __name__ == "__main__":
+    main()

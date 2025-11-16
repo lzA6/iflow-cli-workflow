@@ -1,0 +1,30 @@
+[
+  {
+    "name": "default",
+    "description": "默认知识库",
+    "path": "C:\\Users\\Administrator.DESKTOP-EGNE9ND\\Desktop\\A项目\\knowledge_base\\documents",
+    "file_types": [
+      ".txt",
+      ".md",
+      ".pdf",
+      ".docx",
+      ".doc",
+      ".html",
+      ".py",
+      ".js",
+      ".json",
+      ".xml"
+    ],
+    "max_file_size": 104857600,
+    "auto_index": true,
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "index_batch_size": 100,
+    "chunk_size": 1000,
+    "chunk_overlap": 200,
+    "max_memory_usage_mb": 512,
+    "cache_size": 1000,
+    "index_cache_ttl": 3600,
+    "auto_cleanup_interval": 300,
+    "chunk_max_size": 500
+  }
+]

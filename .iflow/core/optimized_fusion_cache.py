@@ -13,7 +13,8 @@ import asyncio
 import logging
 import time
 import hashlib
-import pickle
+import json
+import pickle  # 仅用于内存估算，不用于数据持久化
 from pathlib import Path
 from typing import Dict, List, Any, Optional, Set, Tuple, Union
 from dataclasses import dataclass, field
